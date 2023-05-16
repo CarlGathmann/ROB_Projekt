@@ -1,0 +1,58 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+triangle = np.random.rand(3, 3)
+triangle = np.array([[2, 2, 0], [2, 0, 0], [0, 2, 0]])
+point = np.random.rand(3)
+point = np.array([1.5, 1.5, 0, 1])
+
+# define one pair of points as one axis
+x_axis = (-triangle[0] + triangle[1]) / np.linalg.norm(-triangle[0] + triangle[1])
+# another pair of points to calculate their normal
+helper = (-triangle[0] + triangle[2]) / np.linalg.norm(-triangle[0] + triangle[2])
+print(helper)
+# the normal of x_axis and another pair of points defines the z_axis
+z_axis = np.cross(x_axis, helper) / np.linalg.norm(np.cross(x_axis, helper))
+
+# y_axis is defined by the norm of the already existing axis
+y_axis = np.cross(x_axis, z_axis)
+
+rot_matrix = np.array([x_axis, y_axis, z_axis]).T
+homogen_rot_matrix = np.ndarray((4,4))
+homogen_rot_matrix[:3, :3] = rot_matrix
+homogen_rot_matrix[3, :] = np.array([0, 0, 0, 1])
+homogen_rot_matrix[:3, 3] = -triangle[0]
+print(homogen_rot_matrix)
+
+'''
+# make sure the system is right-handed
+if np.linalg.det(rot_matrix) == -1:
+    y_axis *= -1
+
+# recreate rot_matrix in case of a left-handed system
+rot_matrix = np.array([x_axis, y_axis, z_axis]).T
+'''
+
+point_rel_tri = np.matmul(homogen_rot_matrix, point)
+print(point_rel_tri)
+
+dXYZ_0 = triangle[1] - triangle[0]
+dXYZ_1 = triangle[2] - triangle[1]
+dXYZ_2 = triangle[0] - triangle[2]
+
+# edge funktion
+print(rot_matrix)
+
+print("0_1: " + str((point[0] - triangle[0][0]) * dXYZ_0[1] - (point[1] - triangle[0][1]) * dXYZ_0[0]))
+
+print("1_2: " + str((point[0] - triangle[1][0]) * dXYZ_1[1] - (point[1] - triangle[1][1]) * dXYZ_1[0]))
+
+print("2_0: " + str((point[0] - triangle[2][0]) * dXYZ_2[1] - (point[1] - triangle[2][1]) * dXYZ_2[0]))
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+ax.scatter(triangle[0][0], triangle[0][1], triangle[0][2], color="r")
+ax.scatter(triangle[1][0], triangle[1][1], triangle[1][2], color="b")
+ax.scatter(triangle[2][0], triangle[2][1], triangle[2][2], color="g")
+ax.scatter(point[0], point[1], color="purple")
+plt.show()
