@@ -3,7 +3,7 @@ import numpy as np
 from mpl_toolkits import mplot3d
 from stl import mesh
 
-from utils import is_inside, transform_point, create_triangles, is_near_edge
+from utils import is_inside, transform_point, create_triangles
 
 filepath = 'meshes/Test ROB Proj v2.stl'
 
@@ -15,7 +15,7 @@ ax.auto_scale_xyz(scale, scale, scale)
 
 EPSILON = 5  # Adjust this value to control the threshold for "near"
 AREA = 40  # create a meshgrid with 40 points in each direction
-AMOUNT = 50
+AMOUNT = 30
 SCALING = 1  # Adjust this value to control the length of the vectors
 DISTANCE = 2  # Adjust this value to control the distance from the surface
 
@@ -44,23 +44,21 @@ def main():
                     transformed_point = transform_point(triangle.transformation_matrix, point)
                     height = transformed_point[0]
 
-                    if is_inside(triangle, transformed_point) and 0 < height < DISTANCE:
+                    if is_inside(triangle, transformed_point) and abs(height) < DISTANCE:
                         u[i, j, k], v[i, j, k], w[i, j, k] = triangle.normal * SCALING
 
                         ''' WEIRD STUFF HAPPENS HERE '''
 
-                        d, edge = is_near_edge(triangle, transformed_point)
+                        edge, d = get_edge_and_dist(triangle, transformed_point)
                         if d <= EPSILON:
                             for adj_triangle in triangle.adjacent_triangles:
-                                for adj_edge in adj_triangle.edges:
-                                    if np.array_equal(edge, adj_edge):
-                                        weight = d / EPSILON
-                                        blended_normal = weight * triangle.normal + (1 - weight) * adj_triangle.normal
-                                        u[i, j, k], v[i, j, k], w[i, j, k] = blended_normal * SCALING
+                                adj_trig_edge, adj_trig_d = get_edge_and_dist(adj_triangle, transformed_point)
+                                if np.array_equal(adj_trig_edge, edge):
+                                    weight = d / EPSILON
+                                    blended_normal = weight * triangle.normal + (1 - weight) * adj_triangle.normal
+                                    u[i, j, k], v[i, j, k], w[i, j, k] = blended_normal * SCALING
 
                         ''' WEIRD STUFF ENDS HERE '''
-
-
 
     # Plot the vector field
     ax.quiver(xx, yy, zz, u, v, w)

@@ -14,12 +14,6 @@ def is_inside(triangle, point):
     return e1 and e2 and e3
 
 
-def is_near_edge(triangle, point):
-    for edge in triangle.edges:
-        d = np.linalg.norm(np.cross(edge, edge[0] - point)) / np.linalg.norm(edge)
-        return d, edge
-
-
 def create_transformation_matrix(triangle):
     transformation_matrix = np.zeros((4, 4))
     rot_matrix = np.zeros((3, 3))
@@ -72,33 +66,18 @@ class Triangle:
         self.transformed_a = transform_point(self.transformation_matrix, self.vertex_a)
         self.transformed_b = transform_point(self.transformation_matrix, self.vertex_b)
         self.transformed_c = transform_point(self.transformation_matrix, self.vertex_c)
-        self.edges = [self.transformed_a - self.transformed_b,
-                        self.transformed_b - self.transformed_c,
-                        self.transformed_c - self.transformed_a]
+        self.edges = [(self.transformed_a, self.transformed_b),
+                      (self.transformed_b, self.transformed_c),
+                      (self.transformed_c, self.transformed_a)]
         self.adjacent_triangles = []
 
     def __str__(self):
         return "Triangle: " + str(self.vertex_a) + ", " + str(self.vertex_b) + ", " + str(self.vertex_c)
 
-    ''' WEIRD STUFF HAPPENS HERE '''
-    def find_adjacent_triangles(self, triangles):
-        for triangle in triangles:
-            if triangle != self and self.is_adjacent(triangle):
-                self.adjacent_triangles.append(triangle)
-
-    def is_adjacent(self, triangle):
-        edges = [(self.vertex_b - self.vertex_a),
-                 (self.vertex_c - self.vertex_b),
-                 (self.vertex_a - self.vertex_c)]
-        triangle_edges = [(triangle.vertex_b - triangle.vertex_a),
-                          (triangle.vertex_c - triangle.vertex_b),
-                          (triangle.vertex_a - triangle.vertex_c)]
-        for edge in edges:
-            for triangle_edge in triangle_edges:
-                if np.array_equal(edge, triangle_edge):
-                    return True
-
-    ''' END OF WEIRD STUFF '''
+class Vertex:
+    def __init__(self, point):
+        self.point = point
+        self.normal = None
 
 
 def create_triangles(mesh):
@@ -107,7 +86,7 @@ def create_triangles(mesh):
     for vectors, normal in zip(mesh.vectors, mesh.normals):
         triangles.append(Triangle(vectors[0], vectors[1], vectors[2], normal))
 
-    # TODO: still some stuff to do here
-    for triangle in triangles:
-        triangle.find_adjacent_triangles(triangles)
     return triangles
+
+
+''' d = np.linalg.norm(np.cross(point - edge[0], edge[1])) / np.linalg.norm(edge[1]) LOTFUßPUNKT'''
