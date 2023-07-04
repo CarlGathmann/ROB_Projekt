@@ -4,7 +4,7 @@ from stl import mesh
 
 fig, ax = plt.subplots(subplot_kw=dict(projection='3d'))
 
-your_mesh = mesh.Mesh.from_file("meshes/Test ROB Proj v2.stl")
+your_mesh = mesh.Mesh.from_file("../meshes/Test ROB Proj v2.stl")
 ax.add_collection3d(mplot3d.art3d.Poly3DCollection(your_mesh.vectors, color='red'))
 scale = your_mesh.points.flatten()
 ax.auto_scale_xyz(scale, scale, scale)
