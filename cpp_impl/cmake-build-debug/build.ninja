@@ -56,6 +56,13 @@ build CMakeFiles/ROB_Projekt.dir/triangle_cpp.cpp.obj: CXX_COMPILER__ROB_Projekt
   OBJECT_DIR = CMakeFiles\ROB_Projekt.dir
   OBJECT_FILE_DIR = CMakeFiles\ROB_Projekt.dir
 
+build CMakeFiles/ROB_Projekt.dir/triangle_point_dist.cpp.obj: CXX_COMPILER__ROB_Projekt_Debug C$:/Users/marte/CLionProjects/ROB_Projekt/cpp_impl/triangle_point_dist.cpp || cmake_object_order_depends_target_ROB_Projekt
+  DEP_FILE = CMakeFiles\ROB_Projekt.dir\triangle_point_dist.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
+  INCLUDES = -IC:/Users/marte/CLionProjects/ROB_Projekt/cpp_impl
+  OBJECT_DIR = CMakeFiles\ROB_Projekt.dir
+  OBJECT_FILE_DIR = CMakeFiles\ROB_Projekt.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ROB_Projekt
@@ -64,7 +71,7 @@ build CMakeFiles/ROB_Projekt.dir/triangle_cpp.cpp.obj: CXX_COMPILER__ROB_Projekt
 #############################################
 # Link the executable ROB_Projekt.exe
 
-build ROB_Projekt.exe: CXX_EXECUTABLE_LINKER__ROB_Projekt_Debug CMakeFiles/ROB_Projekt.dir/triangle_cpp.cpp.obj
+build ROB_Projekt.exe: CXX_EXECUTABLE_LINKER__ROB_Projekt_Debug CMakeFiles/ROB_Projekt.dir/triangle_cpp.cpp.obj CMakeFiles/ROB_Projekt.dir/triangle_point_dist.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ROB_Projekt.dir
