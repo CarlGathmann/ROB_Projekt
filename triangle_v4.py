@@ -5,7 +5,7 @@ from stl import mesh
 
 from utils_v2 import create_triangles, point_triangle_distance, f
 
-filepath = 'meshes/Test ROB Proj v2.stl'
+filepath = 'meshes/test.stl'
 
 fig, ax = plt.subplots(subplot_kw=dict(projection='3d'))
 stl_mesh = mesh.Mesh.from_file(filepath)

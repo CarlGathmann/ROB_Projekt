@@ -9,7 +9,7 @@ c = np.array([0, 12, 0])
 
 p = np.array([0, 6, 0])
 
-filepath = '../meshes/Test ROB Proj v2.stl'
+filepath = '../meshes/test.stl'
 stl_mesh = mesh.Mesh.from_file(filepath)
 
 # barycentric coordinates
