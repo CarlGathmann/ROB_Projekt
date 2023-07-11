@@ -37,13 +37,19 @@ def main():
                 p = np.array([xx[i, j, k], yy[i, j, k], zz[i, j, k]])
                 vec = np.array([0, 0, 0], dtype=float)
                 force = np.array([0, 0, 0], dtype=float)
+                point = np.array([0, 0, 0], dtype=float)
+                smallest_dist = 10000.0
                 for triangle in triangles:
-
-                    dist, point = point_triangle_distance(triangle, p)
-
+                    dist, pp0 = point_triangle_distance(triangle, p)
+            # always uses the smallest distance and the accounting point.
+            # don't know if vector field stays continuous.
+                #   if dist <= smallest_dist:
+                #       smallest_dist = dist
+                #       point = pp0
                     force += f(dist)
-                    vec += p - point
-
+                    vec += p - pp0
+            #   force = f(smallest_dist)
+            #   vec = p - point
                 vec = vec / np.linalg.norm(vec)
                 u[i, j, k], v[i, j, k], w[i, j, k] = vec * force
 

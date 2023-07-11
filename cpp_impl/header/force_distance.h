@@ -1,6 +1,10 @@
 //
-// Created by marte on 10.07.2023.
+// Created by FredvomJupiter on 11.07.2023.
 //
+
+#ifndef ROB_PROJEKT_FORCE_DISTANCE_H
+#define ROB_PROJEKT_FORCE_DISTANCE_H
+
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -169,7 +173,7 @@ std::pair<double, std::vector<double>> point_triangle_distance(const std::vector
 
     // account for numerical round-off error
     if (sqr_distance < 0) {
-    sqr_distance = 0;
+        sqr_distance = 0;
     }
     // return distance and closest point
     double dist = std::sqrt(sqr_distance);
@@ -178,3 +182,24 @@ std::pair<double, std::vector<double>> point_triangle_distance(const std::vector
     return std::make_pair(dist, PP0);
 }
 
+/**
+ * Creates a linear continuous function to calculate the feedback force with respect to the distance.
+ * It is possible to modify the softness and sharpness of the object with full_force and no_force values.
+ * @param dist distance robot TCP to virtual 3D object
+ * @param full_force max force at desired distance. 0 < full_force.
+ * @param no_force no force at desired distance full_force < no_force.
+ * @return force value to be used as scalar.
+ */
+double force(double dist, double full_force, double no_force) {
+    double interval = no_force - full_force;
+
+    if (0.0 <= dist <= full_force) {
+        return 1.0;
+    }else if (full_force < dist <= no_force) {
+        return -(1 / interval) * dist + (no_force / interval);
+    }else if(dist > no_force){
+        return 0;
+    }
+}
+
+#endif //ROB_PROJEKT_FORCE_DISTANCE_H
