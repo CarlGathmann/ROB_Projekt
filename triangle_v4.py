@@ -36,7 +36,7 @@ def main():
             for k in range(xx.shape[2]):
                 p = np.array([xx[i, j, k], yy[i, j, k], zz[i, j, k]])
                 vec = np.array([0, 0, 0], dtype=float)
-                force = np.array([0, 0, 0], dtype=float)
+                force1 = np.array([0, 0, 0], dtype=float)
                 point = np.array([0, 0, 0], dtype=float)
                 smallest_dist = 10000.0
                 for triangle in triangles:
@@ -46,12 +46,16 @@ def main():
                 #   if dist <= smallest_dist:
                 #       smallest_dist = dist
                 #       point = pp0
-                    force += f(dist)
+                    force1 += f(dist)
                     vec += p - pp0
             #   force = f(smallest_dist)
             #   vec = p - point
+                force2 = f(np.linalg.norm(vec))
+                print
                 vec = vec / np.linalg.norm(vec)
-                u[i, j, k], v[i, j, k], w[i, j, k] = vec * force
+                u[i, j, k], v[i, j, k], w[i, j, k] = vec * force2
+                print(force1)
+                print(force2)
 
     # Plot the vector field
     ax.quiver(xx, yy, zz, u, v, w)

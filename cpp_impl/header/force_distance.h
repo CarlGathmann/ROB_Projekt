@@ -6,28 +6,71 @@
 #define ROB_PROJEKT_FORCE_DISTANCE_H
 
 #include <iostream>
+#include <Eigen/Dense>
+#include "stl_reader-master/stl_reader.h"
 #include <cmath>
 #include <vector>
 #include <numeric>
 
-double dot(std::vector<double> v1, std::vector<double> v2) {
-    return std::inner_product(v1.begin(), v1.end(), v2.begin(), 0);
+
+/**
+ * converts a stl file to a list of triangles using the stl_reader.h
+ * the triangles are represented thru their vertices.
+ * https://github.com/sreiter/stl_reader
+ * @param filepath string with the stl-file path
+ * @return vector filled with all triangles of the stl-file
+ */
+std::vector<Eigen::Matrix3d> convert_stl(std::string filepath) {
+    Eigen::Matrix3d triangle;
+    std::vector<Eigen::Matrix3d> triangle_list;
+
+    try {
+        stl_reader::StlMesh <float, unsigned int> mesh (filepath);
+
+        for(size_t itri = 0; itri < mesh.num_tris(); ++itri) {
+            //std::cout << "coordinates of triangle " << itri << ": ";
+
+            for(int icorner = 0; icorner < 3; ++icorner) {
+                const float* c = mesh.tri_corner_coords (itri, icorner);
+                // or alternatively:
+                // float* c = mesh.vrt_coords (mesh.tri_corner_ind (itri, icorner))
+                //std::cout << "(" << c[0] << ", " << c[1] << ", " << c[2] << ") ";
+                triangle.col(icorner) << c[0], c[1], c[2];
+            }
+            triangle_list.push_back(triangle);
+            /**
+            std::cout << std::endl;
+
+            const float* n = mesh.tri_normal(itri);
+            std::cout   << "normal of triangle " << itri << ": "
+                        << "(" << n[0] << ", " << n[1] << ", " << n[2] << ")\n";
+             **/
+        }
+        //std::cout << "triangle amount: "<<triangle_list.size() <<  std::endl;
+        //std::cout << "triangle: "<<triangle.size() <<  std::endl;
+    }
+    catch (std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
+    return triangle_list;
 }
 
-std::pair<double, std::vector<double>> point_triangle_distance(const std::vector<std::vector<float>>& tri, const std::vector<double>& p) {
+
+std::pair<double, Eigen::Vector3d> point_triangle_distance(Eigen::Matrix3d& tri, Eigen::Vector3d& p) {
     // vectors
-    std::vector<float> B = tri[0];
-    std::vector<double> E0 = {tri[1][0] - B[0], tri[1][1] - B[1], tri[1][2] - B[2]};
-    std::vector<double> E1 = {tri[2][0] - B[0], tri[2][1] - B[1], tri[2][2] - B[2]};
-    std::vector<double> D = {B[0] - p[0], B[1] - p[1], B[2] - p[2]};
+    Eigen::Vector3d B = tri.col(0);
+    Eigen::Vector3d E0 = {tri.col(1)[0] - B[0], tri.col(1)[1] - B[1], tri.col(1)[2] - B[2]};
+    Eigen::Vector3d E1 = {tri.col(2)[0] - B[0], tri.col(2)[1] - B[1], tri.col(2)[2] - B[2]};
+    Eigen::Vector3d D = {B[0] - p[0], B[1] - p[1], B[2] - p[2]};
 
     // dot products
-    double a = dot(E0, E0);
-    double b = dot(E0, E1);
-    double c = dot(E1, E1);
-    double d = dot(E0, D);
-    double e = dot(E1, D);
-    double f = dot(D, D);
+
+    double a = E0.dot(E0);
+    double b = E0.dot(E1);
+    double c = E1.dot(E1);
+    double d = E0.dot(D);
+    double e = E1.dot(D);
+    double f = D.dot(D);
 
     double det = a * c - b * b;
     double s = b * e - c * d;
@@ -177,7 +220,7 @@ std::pair<double, std::vector<double>> point_triangle_distance(const std::vector
     }
     // return distance and closest point
     double dist = std::sqrt(sqr_distance);
-    std::vector<double> PP0 = {B[0] + s * E0[0] + t * E1[0], B[1] + s * E0[1] + t * E1[1], B[2] + s * E0[2] + t * E1[2]};
+    Eigen::Vector3d PP0 = {B[0] + s * E0[0] + t * E1[0], B[1] + s * E0[1] + t * E1[1], B[2] + s * E0[2] + t * E1[2]};
 
     return std::make_pair(dist, PP0);
 }
@@ -198,8 +241,25 @@ double force(double dist, double full_force, double no_force) {
     }else if (full_force < dist <= no_force) {
         return -(1 / interval) * dist + (no_force / interval);
     }else if(dist > no_force){
-        return 0;
+        return 0.0;
     }
+    return 0.0;
 }
-
+/**
+ * computes the force feedback as a vector in order to the given triangles(3D-Object)
+ * @param triangle_list triangles of the stl_file
+ * @param tcp_pos TCP posistion of the robot
+ * @return feedback vector
+ */
+Eigen::Vector3d feedback_vector(std::vector<Eigen::Matrix3d> triangle_list, Eigen::Vector3d tcp_pos) {
+    std::pair<double, Eigen::Vector3d> dist_foot;
+    Eigen::Vector3d feedback_vec;
+    double force_scalar;
+    for (auto & triangle : triangle_list) {
+        dist_foot = point_triangle_distance(triangle, tcp_pos);
+        force_scalar += force(std::get<0>(dist_foot), 0.02, 0.05);
+        feedback_vec += std::get<1>(dist_foot) - tcp_pos;
+    }
+    return feedback_vec.normalized()*force_scalar;
+}
 #endif //ROB_PROJEKT_FORCE_DISTANCE_H
