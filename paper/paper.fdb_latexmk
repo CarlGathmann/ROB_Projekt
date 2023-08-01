@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber paper"] 1690892313 "paper.bcf" "paper.bbl" "paper" 1690892404 0
+["biber paper"] 1690892581 "paper.bcf" "paper.bbl" "paper" 1690892588 0
   "Bacherlor_Seminar.bib" 0 -1 0 ""
-  "paper.bcf" 1690892403 107708 c9b07a2395ee6840baecc89a6f4844a8 "pdflatex"
+  "paper.bcf" 1690892587 107708 c9b07a2395ee6840baecc89a6f4844a8 "pdflatex"
   (generated)
   "paper.bbl"
   "paper.blg"
   (rewritten before read)
-["pdflatex"] 1690892402 "c:/Users/FredvomJupiter/VSCode/ROB_Projekt/paper/paper.tex" "paper.pdf" "paper" 1690892404 0
-  "c:/Users/FredvomJupiter/VSCode/ROB_Projekt/paper/paper.tex" 1690892399 12090 4866a4f11e2fbdf67a91692d0bd3f4e3 ""
+["pdflatex"] 1690892586 "c:/Users/FredvomJupiter/VSCode/ROB_Projekt/paper/paper.tex" "paper.pdf" "paper" 1690892588 0
+  "c:/Users/FredvomJupiter/VSCode/ROB_Projekt/paper/paper.tex" 1690892464 12065 55067d24e025658fd1f575ed86842886 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1688048647 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1688049045 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1688052027 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -97,10 +97,10 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1688052656 4683009 81ac55e6554f9124653631026fb1fc4e ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1688052886 7903874 b443864d51f9470395176874d7fe9333 ""
   "c:/texlive/2023/texmf.cnf" 1688052630 713 e69b156964470283e0530f5060668171 ""
-  "paper.aux" 1690892403 1181 8bdfa8d32d6f44f6c659f0e150e7c3a8 "pdflatex"
-  "paper.bbl" 1690892311 0 d41d8cd98f00b204e9800998ecf8427e "biber paper"
-  "paper.run.xml" 1690892403 2319 4ecf29516bddfa5f1282bff46559bac9 "pdflatex"
-  "paper.tex" 1690892399 12090 4866a4f11e2fbdf67a91692d0bd3f4e3 ""
+  "paper.aux" 1690892587 1181 1a3acf433cd98517702aebadf56ddec9 "pdflatex"
+  "paper.bbl" 1690892584 486 ee04f40f768daeed26442158e95aba61 "biber paper"
+  "paper.run.xml" 1690892587 2319 4ecf29516bddfa5f1282bff46559bac9 "pdflatex"
+  "paper.tex" 1690892464 12065 55067d24e025658fd1f575ed86842886 ""
   "pics/interface.jpeg" 1690886631 420469 46a71272c2df00ca3a5a86858d7447b7 ""
   (generated)
   "paper.aux"

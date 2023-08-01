@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.6.29)  1 AUG 2023 14:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.6)  1 AUG 2023 13:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -8,6 +8,10 @@ entering extended mode
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-16>
 (c:/texlive/2023/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
+**"/Users/cgathmann/Documents/Studium/5. Semester/ROB_Projekt/paper/paper.tex"
+(/Users/cgathmann/Documents/Studium/5. Semester/ROB_Projekt/paper/paper.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2022-11-02> (/usr/local/texlive/2022/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
 Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
@@ -536,11 +540,6 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Underfull \hbox (badness 2293) in paragraph at lines 42--43
-\OT1/ptm/m/n/10 Be-nutzer-erfahrung durch die Er-weiterung der sinnlichen
- []
-
-
 Underfull \hbox (badness 6220) in paragraph at lines 46--47
 \OT1/ptm/m/n/10 darunter die Sim-u-la-tion von Op-er-a-tio-nen f[]ur Aus-bil-
  []
@@ -553,6 +552,32 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
  (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+
+]
+Overfull \hbox (1.98494pt too wide) detected at line 127
+\OML/cmm/m/it/10 F[] \OT1/cmr/m/n/10 = []
+ []
+
+
+Overfull \hbox (1.16396pt too wide) detected at line 134
+\OML/cmm/m/it/10 F[] \OT1/cmr/m/n/10 = []
+ []
+
+
+Overfull \hbox (1.22104pt too wide) detected at line 141
+\OML/cmm/m/it/10 F[] \OT1/cmr/m/n/10 = []
+ []
+
+<pics/interface.jpeg, id=15, 2055.68pt x 1541.76pt>
+LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
+(/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -602,15 +627,15 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 12187 strings out of 475722
- 221242 string characters out of 5785825
- 1872763 words of memory out of 5000000
- 32835 multiletter control sequences out of 15000+600000
- 544453 words of font info for 90 fonts, out of 8000000 for 9000
+ 12233 strings out of 474968
+ 225013 string characters out of 5776083
+ 998306 words of memory out of 5000000
+ 33625 multiletter control sequences out of 15000+600000
+ 500325 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,9n,81p,1146b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (3 pages, 560428 bytes).
+ 60i,9n,68p,1149b,801s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (3 pages, 560300 bytes).
 PDF statistics:
  76 PDF objects out of 1000 (max. 8388607)
  45 compressed objects within 1 object stream
