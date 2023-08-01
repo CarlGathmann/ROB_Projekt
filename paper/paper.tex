@@ -50,20 +50,10 @@ Das vorliegende Paper beleuchtet die zugrundeliegenden Prinzipien, technische De
 <= GPT !!!
 
 \section{Methods}
-Die Erzeugung des haptischen Feedbacks beruht auf der Berechnung einer abweisenden Kraft, die so 
-konzipiert ist, dass dem Benutzer ein realistisches Gefühl für die Form des virtuellen 
-3D-Modells vermittelt wird. Die Modelle können als Datei im STL-Standart übergeben werden.
-Der STL-Standart speichert 3D-Modelle als Dreiecksmesh, das aus Vertecies (Eckpunkten) und den 
-Normalen der Dreiecke besteht. Es ist keine besondere CAD Software nötig um 3D-Modelle im STL 
-Format zu erstellen. Außerdem ist das Format weit verbeitet und wird in der Industire zur
-Speicherung und Übertragung von 3D-Modellen eingesetzt. Das sorgt für hohe Flexibilität 
-und einfache Handhabung. !!Quelle zu STL Standart!!
+Die Erzeugung des haptischen Feedbacks beruht auf der Berechnung einer abweisenden Kraft, die so konzipiert ist, dass dem Benutzer ein realistisches Gefühl für die Form des virtuellen 3D-Modells vermittelt wird. Die Modelle können als Datei im STL-Standart übergeben werden. Der STL-Standart speichert 3D-Modelle als Dreiecksmesh, das aus Vertecies (Eckpunkten) und den Normalen der Dreiecke besteht. Es ist keine besondere CAD Software nötig um 3D-Modelle im STL Format zu erstellen. Außerdem ist das Format weit verbeitet und wird in der Industire zur Speicherung und Übertragung von 3D-Modellen eingesetzt. Das sorgt für hohe Flexibilität 
+und einfache Handhabung. !!!Quelle zu STL Standart!!!
 
-Für die physische Implementierung der Mensch-Roboter-Interaktion wurde der Panda-Roboter von 
-Franka Emika ausgewählt. Der Panda zeichnet sich durch seine 7-achsige Struktur aus, die hohe 
-Präzision und Flexibilität bietet. Eine benutzerfreundliche, 3D-gedruckte Schnittstelle 
-(\ref{fig:MRinterface}) wurde am Endeffektor des Roboters installiert, um die Führung durch 
-menschliche Benutzer zu erleichtern.  
+Für die physische Implementierung der Mensch-Roboter-Interaktion wurde der Panda-Roboter von Franka Emika ausgewählt. Der Panda zeichnet sich durch seine 7-achsige Struktur aus, die hohe Präzision und Flexibilität bietet. Eine benutzerfreundliche, 3D-gedruckte Schnittstelle (\ref{fig:MRinterface}) wurde am Endeffektor des Roboters installiert, um die Führung durch menschliche Benutzer zu erleichtern.  
 
 \begin{figure}
     \centering
@@ -72,15 +62,12 @@ menschliche Benutzer zu erleichtern.
     \label{fig:MRinterface}
 \end{figure}
 
-Bei der Entwicklung der Software für dieses System stand die Leistungsfähigkeit 
-im Vordergrund, um eine nahtlose Benutzererfahrung zu gewährleisten. Dazu war es 
-entscheidend, dass die Anwendung in Echtzeit ausgeführt werden kann, wobei eine maximale 
+Bei der Entwicklung der Software für dieses System stand die Leistungsfähigkeit im Vordergrund, um eine nahtlose Benutzererfahrung zu gewährleisten. Dazu war es entscheidend, dass die Anwendung in Echtzeit ausgeführt werden kann, wobei eine maximale 
 Zeitverzögerung von weniger als 1 Millisekunde akzeptiert wurde. Die Programmiersprache 
 C++ wurde aufgrund ihrer hohen Performance ausgewählt, um diesem Anspruch gerecht zu werden. 
-Die Hardware-Konfiguration bestand aus [!!!HARDWARE!!!].
+Die Hardware-Konfiguration bestand aus !!!HARDWARE!!!.
 Die Verarbeitung und Nutzung der 3D-Modelle wurden durch die Umwandlung der STL-Daten in 
-Eigen-Matrizen optimiert. Für diesen Prozess wurde durch einen STL-Parser benutzt. Dadurch ist 
-eine einfache und effiziente Handhabung der 3D-Daten innerhalb des Programms möglich.
+Eigen-Matrizen optimiert. Für diesen Prozess wurde durch einen STL-Parser benutzt. Dadurch ist eine einfache und effiziente Handhabung der 3D-Daten innerhalb des Programms möglich.
 Insgesamt zeichnet sich unsere Methodik durch die Kombination von Standardtechnologien 
 und innovativen Ansätzen aus, um eine effiziente und benutzerfreundliche Lösung für haptisches 
 Feedback in der Mensch-Roboter-Interaktion zu schaffen.

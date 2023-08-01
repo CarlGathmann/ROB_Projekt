@@ -7,9 +7,11 @@ INTERVALL = NO_FORCE - FULL_FORCE
 
 def create_triangles(mesh):
     triangles = []
-    for vectors in mesh.vectors:
+    normals = []
+    for vectors, normal in zip(mesh.vectors, mesh.normals):
         triangles.append(np.array([vectors[0], vectors[1], vectors[2]]))
-    return triangles
+        normals.append(normal)
+    return triangles, normals
 
 
 def f(dist):
