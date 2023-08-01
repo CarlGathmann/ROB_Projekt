@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.6)  10 APR 2023 18:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.6)  1 AUG 2023 10:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -535,14 +535,27 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+Underfull \hbox (badness 2293) in paragraph at lines 42--43
+\OT1/ptm/m/n/10 Be-nutzer-erfahrung durch die Er-weiterung der sinnlichen
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 46--47
+\OT1/ptm/m/n/10 darunter die Sim-u-la-tion von Op-er-a-tio-nen f[]ur Aus-bil-
+ []
+
+<pics/interface.jpeg, id=1, 2055.68pt x 1541.76pt>
+File: pics/interface.jpeg Graphic file (type jpg)
+<use pics/interface.jpeg>
+Package pdftex.def Info: pics/interface.jpeg  used on input line 60.
+(pdftex.def)             Requested size: 232.19843pt x 174.1345pt.
+[1{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+ <./pics/interface.jpeg>]
+
+LaTeX Warning: Empty bibliography on input line 77.
+
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -554,28 +567,34 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[1{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-
+[2
 
 ] (./paper.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                paper
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'paper.run.xml'.
 \openout1 = `paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 12241 strings out of 474968
- 224977 string characters out of 5776083
- 982298 words of memory out of 5000000
- 33627 multiletter control sequences out of 15000+600000
- 506131 words of font info for 99 fonts, out of 8000000 for 9000
+ 12200 strings out of 474968
+ 224437 string characters out of 5776083
+ 991306 words of memory out of 5000000
+ 33605 multiletter control sequences out of 15000+600000
+ 498626 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,8n,68p,744b,801s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 60i,8n,68p,1163b,801s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (1 page, 52264 bytes).
+Output written on paper.pdf (2 pages, 478893 bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
- 17 compressed objects within 1 object stream
+ 33 PDF objects out of 1000 (max. 8388607)
+ 19 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

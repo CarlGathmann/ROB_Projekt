@@ -14,16 +14,16 @@ scale = stl_mesh.points.flatten()
 ax.auto_scale_xyz(scale, scale, scale)
 
 EPSILON = 35  # Adjust this value to control the threshold for "near"
-AMOUNT = 20
-SCALING = 1.5  # Adjust this value to control the length of the vectors
-DISTANCE = 1  # Adjust this value to control the distance from the surface
+AMOUNT = 15
+SCALING = 2  # Adjust this value to control the length of the vectors
+DISTANCE = 2  # Adjust this value to control the distance from the surface
 
 
 def main():
     triangles = create_triangles(stl_mesh)
 
     #  create a meshgrid
-    x, y, z = np.linspace(-2, 35, AMOUNT), np.linspace(-2, 20, AMOUNT), np.linspace(-2, 7, AMOUNT)
+    x, y, z = np.linspace(-4, 35, AMOUNT), np.linspace(-4, 20, AMOUNT), np.linspace(-4, 7, AMOUNT)
 
     # Create a meshgrid of x, y, z coordinates
     xx, yy, zz = np.meshgrid(x, y, z)
@@ -36,26 +36,10 @@ def main():
             for k in range(xx.shape[2]):
                 p = np.array([xx[i, j, k], yy[i, j, k], zz[i, j, k]])
                 vec = np.array([0, 0, 0], dtype=float)
-                force1 = np.array([0, 0, 0], dtype=float)
-                point = np.array([0, 0, 0], dtype=float)
-                smallest_dist = 10000.0
                 for triangle in triangles:
                     dist, pp0 = point_triangle_distance(triangle, p)
-            # always uses the smallest distance and the accounting point.
-            # don't know if vector field stays continuous.
-                #   if dist <= smallest_dist:
-                #       smallest_dist = dist
-                #       point = pp0
-                    force1 += f(dist)
-                    vec += p - pp0
-            #   force = f(smallest_dist)
-            #   vec = p - point
-                force2 = f(np.linalg.norm(vec))
-                print
-                vec = vec / np.linalg.norm(vec)
-                u[i, j, k], v[i, j, k], w[i, j, k] = vec * force2
-                print(force1)
-                print(force2)
+                    vec += (p - pp0) * f(dist)
+                u[i, j, k], v[i, j, k], w[i, j, k] = vec
 
     # Plot the vector field
     ax.quiver(xx, yy, zz, u, v, w)

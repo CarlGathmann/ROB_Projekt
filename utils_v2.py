@@ -1,7 +1,7 @@
 import numpy as np
 
-FULL_FORCE = 0.2
-NO_FORCE = 0.5
+FULL_FORCE = 0.5
+NO_FORCE = 0.9
 INTERVALL = NO_FORCE - FULL_FORCE
 
 
@@ -9,16 +9,15 @@ def create_triangles(mesh):
     triangles = []
     for vectors in mesh.vectors:
         triangles.append(np.array([vectors[0], vectors[1], vectors[2]]))
-
     return triangles
 
 
 def f(dist):
-    if 0 <= dist <= FULL_FORCE:
-        return 1  # what ever is much
+    if dist <= FULL_FORCE:
+        return 5  # what ever is much
     elif FULL_FORCE < dist <= NO_FORCE:
         return -(1 / INTERVALL) * dist + NO_FORCE / INTERVALL
-    elif dist > NO_FORCE:
+    else:
         return 0
 
 
@@ -184,6 +183,6 @@ def point_triangle_distance(tri, p):
 
     # return distance and closest point
     dist = np.sqrt(sqr_distance)
-    PP0 = B + s * E0 + t * E1
+    pp0 = B + s * E0 + t * E1
 
-    return dist, PP0
+    return dist, pp0
