@@ -1,8 +1,8 @@
-PWD /Users/cgathmann/Documents/Studium/5. Semester/BA Projekt/paper
+PWD /Users/cgathmann/Documents/Studium/5. Semester/ROB_Projekt/paper
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/cgathmann/Documents/Studium/5. Semester/BA Projekt/paper/paper.tex
+INPUT /Users/cgathmann/Documents/Studium/5. Semester/ROB_Projekt/paper/paper.tex
 OUTPUT paper.log
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
@@ -478,12 +478,23 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
-INPUT ./pics/interface.jpeg
-INPUT ./pics/interface.jpeg
-INPUT pics/interface.jpeg
-INPUT ./pics/interface.jpeg
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 OUTPUT paper.pdf
-INPUT ./pics/interface.jpeg
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map
@@ -499,11 +510,24 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT ./pics/interface.jpeg
+INPUT ./pics/interface.jpeg
+INPUT pics/interface.jpeg
+INPUT ./pics/interface.jpeg
+INPUT ./pics/interface.jpeg
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT paper.aux
 INPUT paper.run.xml
 OUTPUT paper.run.xml
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
