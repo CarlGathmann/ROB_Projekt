@@ -1,9 +1,15 @@
 [0] Config.pm:306> INFO - This is Biber 2.18
 [0] Config.pm:309> INFO - Logfile is 'paper.blg'
-[65] biber-darwin:340> INFO - === Tue Aug  1, 2023, 15:02:48
-[80] Biber.pm:418> INFO - Reading 'paper.bcf'
-[152] Biber.pm:978> INFO - Found 0 citekeys in bib section 0
-[161] bbl.pm:654> INFO - Writing 'paper.bbl' with encoding 'UTF-8'
-[161] bbl.pm:757> INFO - Output to paper.bbl
-[162] Biber.pm:130> WARN - The file 'paper.bcf' does not contain any citations!
-[162] Biber.pm:132> INFO - WARNINGS: 1
+[37] biber-darwin:340> INFO - === Thu Aug  3, 2023, 21:22:50
+[45] Biber.pm:418> INFO - Reading 'paper.bcf'
+[91] Biber.pm:978> INFO - Found 2 citekeys in bib section 0
+[100] Biber.pm:4401> INFO - Processing section 0
+[106] Biber.pm:4592> INFO - Looking for bibtex file 'ROB_Projekt.bib' for section 0
+[107] bibtex.pm:1713> INFO - LaTeX decoding ...
+[109] bibtex.pm:1518> INFO - Found BibTeX data source 'ROB_Projekt.bib'
+[131] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[131] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[131] Biber.pm:4221> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[131] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
+[132] bbl.pm:654> INFO - Writing 'paper.bbl' with encoding 'UTF-8'
+[133] bbl.pm:757> INFO - Output to paper.bbl

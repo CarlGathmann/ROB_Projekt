@@ -1,7 +1,7 @@
 import numpy as np
 
-FULL_FORCE = 0.5
-NO_FORCE = 0.9
+FULL_FORCE = 0.1
+NO_FORCE = 1
 INTERVALL = NO_FORCE - FULL_FORCE
 
 

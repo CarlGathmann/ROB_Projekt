@@ -52,7 +52,7 @@ def vector_field(triangles):
                     dist, pp0 = point_triangle_distance(triangle, p)
                     _dir = p - pp0
                     if _dir.dot(normal) >= 0:
-                        vec += (p - pp0) * f(dist)
+                        vec += _dir * f(dist)
                 u[i, j, k], v[i, j, k], w[i, j, k] = vec
     # Plot the vector field
     ax.quiver(xx, yy, zz, u, v, w)

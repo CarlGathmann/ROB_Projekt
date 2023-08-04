@@ -16,5 +16,70 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{DistancePointTriangle}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e5f2813b3349961b6119bfb4a8df6f0f}{%
+           family={Eberly},
+           familyi={E\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{e5f2813b3349961b6119bfb4a8df6f0f}
+      \strng{fullhash}{e5f2813b3349961b6119bfb4a8df6f0f}
+      \strng{bibnamehash}{e5f2813b3349961b6119bfb4a8df6f0f}
+      \strng{authorbibnamehash}{e5f2813b3349961b6119bfb4a8df6f0f}
+      \strng{authornamehash}{e5f2813b3349961b6119bfb4a8df6f0f}
+      \strng{authorfullhash}{e5f2813b3349961b6119bfb4a8df6f0f}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{28.09.1999}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{title}{Distance {{Between Point}} and {{Triangle}} in {{3D}}}
+      \field{urlday}{8}
+      \field{urlmonth}{3}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/cgathmann/Zotero/storage/DNL6NN8A/Eberly - Distance Between Point and Triangle in 3D.pdf
+      \endverb
+    \endentry
+    \entry{regionen}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bb5bdabd25b05be3588271e39b3d3895}{%
+           family={Ehrhardt},
+           familyi={E\bibinitperiod},
+           given={Dr.\bibnamedelimi rer.\bibnamedelimi nat.\bibnamedelimi Jan},
+           giveni={D\bibinitperiod\bibinitdelim r\bibinitperiod\bibinitdelim n\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{bb5bdabd25b05be3588271e39b3d3895}
+      \strng{fullhash}{bb5bdabd25b05be3588271e39b3d3895}
+      \strng{bibnamehash}{bb5bdabd25b05be3588271e39b3d3895}
+      \strng{authorbibnamehash}{bb5bdabd25b05be3588271e39b3d3895}
+      \strng{authornamehash}{bb5bdabd25b05be3588271e39b3d3895}
+      \strng{authorfullhash}{bb5bdabd25b05be3588271e39b3d3895}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{Uebungsblatt4}
+      \field{urlday}{3}
+      \field{urlmonth}{8}
+      \field{urlyear}{2023}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/cgathmann/Zotero/storage/AENFSUUH/SS23_CS3205_Ue04_Aufgaben.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

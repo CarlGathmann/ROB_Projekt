@@ -79,7 +79,7 @@
       <file>paper.bcf</file>
     </requires>
     <requires type="editable">
-      <file>Bacherlor_Seminar.bib</file>
+      <file>ROB_Projekt.bib</file>
     </requires>
   </external>
 </requests>
