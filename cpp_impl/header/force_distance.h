@@ -55,8 +55,7 @@ std::vector<Eigen::Matrix3d> convert_stl(std::string filepath) {
     return triangle_list;
 }
 
-
-std::pair<double, Eigen::Vector3d> point_triangle_distance(Eigen::Matrix3d& tri, Eigen::Vector3d& p) {
+int point_triangle_distance(Eigen::Matrix3d& tri, Eigen::Vector3d& p, Eigen::Vector3d* vec_out_ptr, double* dist_ptr) {
     // vectors
     Eigen::Vector3d B = tri.col(0);
     Eigen::Vector3d E0 = {tri.col(1)[0] - B[0], tri.col(1)[1] - B[1], tri.col(1)[2] - B[2]};
@@ -219,10 +218,9 @@ std::pair<double, Eigen::Vector3d> point_triangle_distance(Eigen::Matrix3d& tri,
         sqr_distance = 0;
     }
     // return distance and closest point
-    double dist = std::sqrt(sqr_distance);
-    Eigen::Vector3d PP0 = {B[0] + s * E0[0] + t * E1[0], B[1] + s * E0[1] + t * E1[1], B[2] + s * E0[2] + t * E1[2]};
-
-    return std::make_pair(dist, PP0);
+    *dist_ptr= std::sqrt(sqr_distance);
+    *vec_out_ptr = {B[0] + s * E0[0] + t * E1[0], B[1] + s * E0[1] + t * E1[1], B[2] + s * E0[2] + t * E1[2]};
+    return 0;
 }
 
 /**
@@ -251,15 +249,14 @@ double force(double dist, double full_force, double no_force) {
  * @param tcp_pos TCP posistion of the robot
  * @return feedback vector
  */
-Eigen::Vector3d feedback_vector(std::vector<Eigen::Matrix3d> triangle_list, Eigen::Vector3d tcp_pos) {
-    std::pair<double, Eigen::Vector3d> dist_foot;
-    Eigen::Vector3d feedback_vec;
+void feedback_vector(std::vector<Eigen::Matrix3d> triangle_list, Eigen::Vector3d tcp_pos, Eigen::Vector3d* feedback_vec_ptr) {
+    Eigen::Vector3d vec;
+    double distance;
     double force_scalar;
     for (auto & triangle : triangle_list) {
-        dist_foot = point_triangle_distance(triangle, tcp_pos);
-        force_scalar += force(std::get<0>(dist_foot), 0.02, 0.05);
-        feedback_vec += std::get<1>(dist_foot) - tcp_pos;
+       point_triangle_distance(triangle, tcp_pos, &vec, &distance);
+        *feedback_vec_ptr += (vec - tcp_pos) * force(distance, 0.02, 0.05);;
     }
-    return feedback_vec.normalized()*force_scalar;
+
 }
 #endif //ROB_PROJEKT_FORCE_DISTANCE_H

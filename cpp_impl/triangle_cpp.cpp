@@ -13,6 +13,12 @@ int main() {
     std::string filepath = "meshes/cube.stl";
     std::vector<Eigen::Matrix3d> triangle_list;
     triangle_list = convert_stl(filepath);
+    //experiment
+    const int length = sizeof(triangle_list);
+    std::array<Eigen::Matrix3d, length> triangle_array;
+    for (int i = 0; i < length; i++) {
+        triangle_array[i] = triangle_list[i];
+    }
     double force_scalar = 0.0;
     Eigen::Vector3d vec;
     Eigen::Vector3d point = {0.0, 0.67, 0.67 };    // position from robot TCP
@@ -21,7 +27,8 @@ int main() {
         std::cout << "Coords of triangle " << i << ": \n";
         std::cout << triangle_list[i] << std::endl;
     }
-    vec = feedback_vector(triangle_list, point);
+    feedback_vector(triangle_list, point, &vec);
+    std::cout << vec << std::endl;
     /**
     for (auto & triangle : triangle_list) {
         dist_foot = point_triangle_distance(triangle, point);
