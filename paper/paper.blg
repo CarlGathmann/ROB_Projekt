@@ -1,15 +1,17 @@
-[0] Config.pm:306> INFO - This is Biber 2.18
-[0] Config.pm:309> INFO - Logfile is 'paper.blg'
-[37] biber-darwin:340> INFO - === Thu Aug  3, 2023, 21:22:50
-[45] Biber.pm:418> INFO - Reading 'paper.bcf'
-[91] Biber.pm:978> INFO - Found 2 citekeys in bib section 0
-[100] Biber.pm:4401> INFO - Processing section 0
-[106] Biber.pm:4592> INFO - Looking for bibtex file 'ROB_Projekt.bib' for section 0
-[107] bibtex.pm:1713> INFO - LaTeX decoding ...
-[109] bibtex.pm:1518> INFO - Found BibTeX data source 'ROB_Projekt.bib'
-[131] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[131] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[131] Biber.pm:4221> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[131] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
-[132] bbl.pm:654> INFO - Writing 'paper.bbl' with encoding 'UTF-8'
-[133] bbl.pm:757> INFO - Output to paper.bbl
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'paper.blg'
+[146] biber-MSWIN64:340> INFO - === 
+[205] Biber.pm:419> INFO - Reading 'paper.bcf'
+[365] Biber.pm:979> INFO - Found 5 citekeys in bib section 0
+[385] Biber.pm:4419> INFO - Processing section 0
+[399] Biber.pm:4610> INFO - Looking for bibtex file 'ROB_Projekt.bib' for section 0
+[486] bibtex.pm:1713> INFO - LaTeX decoding ...
+[500] bibtex.pm:1519> INFO - Found BibTeX data source 'ROB_Projekt.bib'
+[567] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[567] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[567] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[567] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[577] bbl.pm:660> INFO - Writing 'paper.bbl' with encoding 'UTF-8'
+[579] bbl.pm:763> INFO - Output to paper.bbl
+[579] Biber.pm:131> WARN - online entry 'WasIstSTLDatei2017' (ROB_Projekt.bib): Invalid format '2017-02-01T11:50:32-0500' of date field 'date' - ignoring
+[579] Biber.pm:133> INFO - WARNINGS: 1
