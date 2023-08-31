@@ -42,7 +42,7 @@
       \verb{url}
       \verb https://de.3dsystems.com/quickparts/learning-center/what-is-stl-file
       \endverb
-      \warn{\item online entry 'WasIstSTLDatei2017' (ROB_Projekt.bib): Invalid format '2017-02-01T11:50:32-0500' of date field 'date' - ignoring}
+      \warn{\item Entry 'WasIstSTLDatei2017' (ROB_Projekt.bib): Invalid format '2017-02-01T11:50:32-0500' of date field 'date' - ignoring}
     \endentry
     \entry{pandaDatasheet}{misc}{}
       \name{author}{1}{}{%
@@ -117,8 +117,8 @@
       \strng{authorbibnamehash}{e5f2813b3349961b6119bfb4a8df6f0f}
       \strng{authornamehash}{e5f2813b3349961b6119bfb4a8df6f0f}
       \strng{authorfullhash}{e5f2813b3349961b6119bfb4a8df6f0f}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{28}
@@ -129,35 +129,6 @@
       \field{dateera}{ce}
       \verb{file}
       \verb D\:\\OneDrive\\UNI\\Semester 5\\BA Projekt\\Quellen\\DistancePoint3Triangle3.pdf
-      \endverb
-    \endentry
-    \entry{regionen}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=bb5bdabd25b05be3588271e39b3d3895}{%
-           family={Ehrhardt},
-           familyi={E\bibinitperiod},
-           given={Dr.\bibnamedelimi rer.\bibnamedelimi nat.\bibnamedelimi Jan},
-           giveni={D\bibinitperiod\bibinitdelim r\bibinitperiod\bibinitdelim n\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
-      }
-      \strng{namehash}{bb5bdabd25b05be3588271e39b3d3895}
-      \strng{fullhash}{bb5bdabd25b05be3588271e39b3d3895}
-      \strng{bibnamehash}{bb5bdabd25b05be3588271e39b3d3895}
-      \strng{authorbibnamehash}{bb5bdabd25b05be3588271e39b3d3895}
-      \strng{authornamehash}{bb5bdabd25b05be3588271e39b3d3895}
-      \strng{authorfullhash}{bb5bdabd25b05be3588271e39b3d3895}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{month}{6}
-      \field{title}{Uebungsblatt4}
-      \field{urlday}{3}
-      \field{urlmonth}{8}
-      \field{urlyear}{2023}
-      \field{year}{2023}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb /Users/cgathmann/Zotero/storage/AENFSUUH/SS23_CS3205_Ue04_Aufgaben.pdf
       \endverb
     \endentry
   \enddatalist

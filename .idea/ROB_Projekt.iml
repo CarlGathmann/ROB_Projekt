@@ -5,4 +5,7 @@
       <configuration sdkName="Python 3.9 (ROB_Projekt)" />
     </facet>
   </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="5416cf11-3095-492a-b8b2-090b93c31700" />
+  </component>
 </module>

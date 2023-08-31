@@ -14,7 +14,7 @@ def create_triangles(mesh):
     return triangles, normals
 
 
-def f(dist):
+def influence(dist):
     if dist <= FULL_FORCE:
         return 5  # what ever is much
     elif FULL_FORCE < dist <= NO_FORCE:
@@ -25,18 +25,18 @@ def f(dist):
 
 def point_triangle_distance(tri, p):
     # vectors
-    B = tri[0]
-    E0 = tri[1] - B
-    E1 = tri[2] - B
-    D = B - p
+    b_0 = tri[0]
+    e_0 = tri[1] - b_0
+    e_1 = tri[2] - b_0
+    d_0 = b_0 - p
 
     # dot products
-    a = np.dot(E0, E0)
-    b = np.dot(E0, E1)
-    c = np.dot(E1, E1)
-    d = np.dot(E0, D)
-    e = np.dot(E1, D)
-    f = np.dot(D, D)
+    a = np.dot(e_0, e_0)
+    b = np.dot(e_0, e_1)
+    c = np.dot(e_1, e_1)
+    d = np.dot(e_0, d_0)
+    e = np.dot(e_1, d_0)
+    f = np.dot(d_0, d_0)
 
     det = a * c - b * b
     s = b * e - c * d
@@ -185,6 +185,6 @@ def point_triangle_distance(tri, p):
 
     # return distance and closest point
     dist = np.sqrt(sqr_distance)
-    pp0 = B + s * E0 + t * E1
+    pp0 = b_0 + s * e_0 + t * e_1
 
     return dist, pp0
