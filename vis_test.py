@@ -5,38 +5,40 @@ from matplotlib import pyplot as plt
 from mpl_toolkits import mplot3d
 from stl import mesh
 
-from utils_v2 import create_triangles, point_triangle_distance, f
+from utils_v2 import create_triangles, point_triangle_distance, influence
 
 filepath = 'meshes/test.stl'
 
 fig, ax = plt.subplots(subplot_kw=dict(projection='3d'))
 stl_mesh = mesh.Mesh.from_file(filepath)
+triangles = create_triangles(stl_mesh)
 ax.add_collection3d(mplot3d.art3d.Poly3DCollection(stl_mesh.vectors, color='lightgrey', edgecolor='black'))
 scale = stl_mesh.points.flatten()
 ax.auto_scale_xyz(scale, scale, scale)
 
-EPSILON = 35  # Adjust this value to control the threshold for "near"
 AMOUNT = 25
 SCALING = 2  # Adjust this value to control the length of the vectors
 DISTANCE = 2  # Adjust this value to control the distance from the surface
+REPETITIONS = 1000
 
 
-def single_point(triangles):
+def main():
+    print((timeit.timeit(single_point, number=REPETITIONS) / REPETITIONS) * 1000)
+    vector_field()
+
+
+def single_point():
     p = np.array([np.random.randint(0, 10), np.random.randint(0, 10), np.random.randint(0, 7)])
     vec = np.array([0, 0, 0], dtype=float)
     for triangle, normal in zip(triangles[0], triangles[1]):
         dist, pp0 = point_triangle_distance(triangle, p)
         _dir = p - pp0
         if _dir.dot(normal) >= 0:
-            vec += (p - pp0) * f(dist)
+            vec += (p - pp0) * influence(dist)
+    return vec
 
 
-def main():
-    triangles = create_triangles(stl_mesh)
-    vector_field(triangles)
-
-
-def vector_field(triangles):
+def vector_field():
     #  create a meshgrid
     x, y, z = np.linspace(-2, 35, AMOUNT), np.linspace(-2, 20, AMOUNT), np.linspace(-4, 15, AMOUNT)
     # Create a meshgrid of x, y, z coordinates
@@ -52,7 +54,7 @@ def vector_field(triangles):
                     dist, pp0 = point_triangle_distance(triangle, p)
                     _dir = p - pp0
                     if _dir.dot(normal) >= 0:
-                        vec += _dir * f(dist)
+                        vec += _dir * influence(dist)
                 u[i, j, k], v[i, j, k], w[i, j, k] = vec
     # Plot the vector field
     ax.quiver(xx, yy, zz, u, v, w)
