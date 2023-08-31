@@ -267,22 +267,7 @@ Um dieses Ergebnis zu erreichen wird zunächst die Darstellungsform des Dreiecks
 \begin{equation}
     Q(s,t) = |T(s,t) - P|^2 = as^2 + 2bst + ct^2 + 2ds + 2et + f
 \end{equation}
-mit $(s,t) \in D$. Die Koeffizienten $a, b, c, d, e, f$ lassen sich durch die Eckpunkte des Dreiecks und den Punkt $P$ berechnen \autocite*{eberlyDistancePointTriangle}. Somit kann die Punkt-Dreieck-Distanz durch die Minimierung von $Q(s,t)$ bestimmt werden. Durch die Annahme, dass $E_0$ und $E_1$ linear unabhängig sind kann $Q(s,t)$ nur ein globales Minimum besitzen. Das Minimum von $Q(s,t)$ kann durch das Nullsetzen des Gradienten ermittelt werden. Daraus ergeben sich die Parameter $\tilde{t} = \frac{be-cd}{ac-b^2}$ sowie $\tilde{s} = \frac{bd-ae}{ac-b^2}$. Sind $(\tilde{s}, \tilde{t}) \in D$, so ist der Punkt $P$ innerhalb des Dreiecks. Andernfalls muss das Minimum auf den Kanten des Dreiecks liegen. Um die richtige Kante zu bestimmen wird das Dreieck wie in Bild \ref{fig:regions} in Regionen unterteilt.
-
-
-Um den resultierenden Kraftvektor zu ermitteln, wurde folgendes Verfahren implementiert: \\
-\textbf{für jedes Dreieck der STL Datei:}
-\begin{enumerate}
-    \item Berechnung von $dist$ und $pp0$ mit Hilfe der Point-Triangle-Distance-Funktion.
-    \item Berechnung des Vektors $v$ zwischen $pp0$ und der Roboterposition $p$.
-    \item Wenn das Skalarprodukt von $v$ und der Normalen des Dreiecks positiv ist, wird die 
-    resultierende Kraft $F$ wie folgt ergänzt:
-    \begin{equation*}
-        F \mathrel{\raisebox{0.19ex}{$\scriptstyle+$}}= v \cdot influence(dist)
-    \end{equation*}
-\end{enumerate}
-Die Funktion $f(dist)$ ist dabei eine linear fallende Funktion, die den Einfluss der Distanz 
-auf die Kraft bestimmt.
+mit $(s,t) \in D$. Die Koeffizienten $a, b, c, d, e, f$ lassen sich durch die Eckpunkte des Dreiecks und den Punkt $P$ berechnen \autocite*{eberlyDistancePointTriangle}. Somit kann die Punkt-Dreieck-Distanz durch die Minimierung von $Q(s,t)$ bestimmt werden. Durch die Annahme, dass $E_0$ und $E_1$ linear unabhängig sind kann $Q(s,t)$ nur ein globales Minimum besitzen. Das Minimum von $Q(s,t)$ kann durch das Nullsetzen des Gradienten ermittelt werden. Daraus ergeben sich die Parameter $\tilde{t} = \frac{be-cd}{ac-b^2}$ sowie $\tilde{s} = \frac{bd-ae}{ac-b^2}$. Sind $(\tilde{s}, \tilde{t}) \in D$, so ist der Punkt $P$ innerhalb des Dreiecks. Andernfalls muss das Minimum auf den Kanten des Dreiecks liegen. Um die richtige Kante zu bestimmen wird das Dreieck wie in Bild \ref{fig:regions} in Regionen unterteilt. Es ergeben sich die folgenden Bedingungen für die Regionen: 
 
 \begin{figure}[h]
     \centering
@@ -309,14 +294,29 @@ auf die Kraft bestimmt.
 
             \addplot [dashed] coordinates {(0.02,1) (0.02,0)};
 
-            \node[label={270:0.02}, circle,fill,inner sep=1.5pt] at (axis cs:0.02,0) {};
+            \node[label={270:0.02},inner sep=1.5pt] at (axis cs:0.02,0) {};
             \node[label={0:{$A$}},circle,fill,inner sep=1.5pt] at (axis cs:0.02,1) {};
             \node[label={45:{$B$}},label={270:0.05},circle,fill,inner sep=1.5pt] at (axis cs:0.05,0) {};
             
         \end{axis}
     \end{tikzpicture}
     \caption{Die Funktion $influence(dist)$, die den Einfluss der Distanz auf den resultierenden Kraftvektor $F$ bestimmt.}
+    \label{fig:influence}
 \end{figure}
+
+Um den resultierenden Kraftvektor zu ermitteln, wurde folgendes Verfahren implementiert: \\
+\textbf{für jedes Dreieck der STL Datei:}
+\begin{enumerate}
+    \item Berechnung von $dist$ und $pp0$ mithilfe der Point-Triangle-Distance-Funktion.
+    \item Berechnung des Vektors $v$ zwischen $pp0$ und der Roboterposition $p$.
+    \item Wenn das Skalarprodukt von $v$ und der Normalen des Dreiecks positiv ist, wird die 
+    resultierende Kraft $F$ wie folgt ergänzt:
+    \begin{equation*}
+        F \mathrel{\raisebox{0.19ex}{$\scriptstyle+$}}= v \cdot influence(dist)
+    \end{equation*}
+\end{enumerate}
+
+Die Funktion $influence(dist)$ repräsentiert eine lineare Abschwächung innerhalb eines spezifischen Intervalls, das von 1 auf 0 abfällt (siehe Bild \ref{fig:influence}). So können die verschiedenen Einflüsse der Kraftvektoren auf den resultierenden Gesamtkraftvektor variiert werden. Ein breiteres Intervall führt dabei zu einer weicheren und abgerundeteren Haptik des simulierten Objekts. In unserer Implementierung haben wir ein Intervall von 5cm bis 2cm festgelegt. Vektoren, die von dem Punkt der minimalen Distanz zur Roboterposition ausgehen und eine Länge von weniger als 2 cm aufweisen, werden mit vollständiger Intensität in die Berechnung einbezogen. Vektoren mit einer Länge von 5 cm oder mehr werden aus der Berechnung ausgeschlossen. Für alle dazwischenliegenden Vektorlängen erfolgt eine lineare Interpolation.
 
 \begin{figure}[h]
     \centering
@@ -379,7 +379,7 @@ Zusammenfassend kann gesagt werden, dass die Methode \ref*{dist} die nötige Per
 haptisches Feedback zu erzeugen. Durch das Verwenden des STL-Standarts können mit Beschränkungen in der Auflösung des 
 3D-Modells beliebige Objekte zu stetigen und kontinuierlichen Vektorfeldern konvertiert werden. Somit ist eine eine einfache und 
 flexible Handhabung gewährleistet. Die Methode zur Erzeugung haptischen Feedbacks eines Roboters durch virtuelle 3D-Modelle 
-kann demnach in unterschiedlichen Anwendungsberiech einzug finden.  
+kann demnach in unterschiedlichen Anwendungsbereich einzug finden.  
 
 \printbibliography
 
