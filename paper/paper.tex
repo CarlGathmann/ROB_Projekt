@@ -220,9 +220,9 @@ Die tatsächlich angewandte Methode zur des Kraftvektors basiert auf den Ergebni
 von \Citeauthor{eberlyDistancePointTriangle}. In der Arbeit wird eine Methode zur Berechnung der Punkt-Dreieck-Distanz präsentiert. Die Methode liefert dabei zwei wesentliche Werte zurück:
 
 \begin{enumerate}
-\item 'dist': Dieser Parameter repräsentiert den minimalen Abstand zwischen einem vorgegebenen Punkt 'p' und dem Dreieck. Der Wert entspricht der kürzesten euklidischen Distanz, die von 'p' bis zur nächsten Position auf dem Dreieck (seien es Kanten, Eckpunkte oder eine Flächenposition innerhalb der Dreiecksgrenzen) 
+\item 'dist': Dieser Parameter repräsentiert den minimalen Abstand zwischen einem vorgegebenen Punkt $P$ und dem Dreieck. Der Wert entspricht der kürzesten euklidischen Distanz, die von $P$ bis zur nächsten Position auf dem Dreieck (seien es Kanten, Eckpunkte oder eine Flächenposition innerhalb der Dreiecksgrenzen) 
 gemessen wird.
-\item 'pp0': Dieser Parameter repräsentiert den entsprechenden Punkt auf dem Dreieck, der 'p' am nächsten liegt. Es handelt sich hierbei um den Punkt auf dem Dreieck, der den minimalen Abstand 'dist' zu 'p' aufweist.
+\item 'foot': Dieser Parameter repräsentiert den entsprechenden Punkt auf dem Dreieck, der $P$ am nächsten liegt. Es handelt sich hierbei um den Punkt auf dem Dreieck, der den minimalen Abstand 'dist' zu $P$ aufweist.
 \end{enumerate}
 
 
@@ -258,16 +258,12 @@ gemessen wird.
 \end{figure}
 
 
-Die Anwendung dieser Methode ermöglicht somit eine präzise und effiziente Bestimmung der 
-Punkt-Dreieck-Distanz im dreidimensionalen Raum.
-
-
-
-Um dieses Ergebnis zu erreichen wird zunächst die Darstellungsform des Dreiecks verändert. Die Eckpunkte eines Dreiecks werden in eine Ebenengleichung $ T(s,t) = B + sE_0 + tE_1 $ übertragen, wobei $(s, t) \in D = \{(s,t): s \geq 0, t \geq 0, s + t \leq 1 \}$ gelten muss. Die Entfernung $Q(s,t)$ zwischen einem Punkt $P$ und dem Dreieck $T(s,t)$ lässt sich durch den quadrierten euklidischen Abstand darstellen: 
+Die Anwendung dieser Methode ermöglicht somit eine präzise und effiziente Bestimmung der Punkt-Dreieck-Distanz im dreidimensionalen Raum.
+Um dieses Ergebnis zu erreichen wird zunächst die Darstellungsform des Dreiecks verändert. Die Eckpunkte eines Dreiecks werden in eine Ebenengleichung $ T(s,t) = B + sE_0 + tE_1 $ übertragen, wobei $(s, t) \in D = \{(s,t): s \geq 0, t \geq 0, s + t \leq 1 \}$ gelten muss. Die Entfernung $Q(s,t)$ zwischen einem Punkt $P$ und dem Dreieck $T(s,t)$ lässt sich durch den quadrierten euklidischen Abstand als elliptischen Paraboloid darstellen: 
 \begin{equation}
     Q(s,t) = |T(s,t) - P|^2 = as^2 + 2bst + ct^2 + 2ds + 2et + f
 \end{equation}
-mit $(s,t) \in D$. Die Koeffizienten $a, b, c, d, e, f$ lassen sich durch die Eckpunkte des Dreiecks und den Punkt $P$ berechnen \autocite*{eberlyDistancePointTriangle}. Somit kann die Punkt-Dreieck-Distanz durch die Minimierung von $Q(s,t)$ bestimmt werden. Durch die Annahme, dass $E_0$ und $E_1$ linear unabhängig sind kann $Q(s,t)$ nur ein globales Minimum besitzen. Das Minimum von $Q(s,t)$ kann durch das Nullsetzen des Gradienten ermittelt werden. Daraus ergeben sich die Parameter $\tilde{t} = \frac{be-cd}{ac-b^2}$ sowie $\tilde{s} = \frac{bd-ae}{ac-b^2}$. Sind $(\tilde{s}, \tilde{t}) \in D$, so ist der Punkt $P$ innerhalb des Dreiecks. Andernfalls muss das Minimum auf den Kanten des Dreiecks liegen. Um die richtige Kante zu bestimmen wird das Dreieck wie in Bild \ref{fig:regions} in Regionen unterteilt. Es ergeben sich die folgenden Bedingungen für die Regionen: 
+mit $(s,t) \in D$. Die Koeffizienten $a, b, c, d, e, f$ lassen sich durch die Eckpunkte des Dreiecks und den Punkt $P$ berechnen \autocite*{eberlyDistancePointTriangle}. Somit kann die Punkt-Dreieck-Distanz durch die Minimierung von $Q(s,t)$ bestimmt werden. Durch die Annahme, dass $E_0$ und $E_1$ linear unabhängig sind kann $Q(s,t)$ nur ein globales Minimum besitzen. Das Minimum von $Q(s,t)$ kann durch das Nullsetzen des Gradienten  ermittelt werden. Daraus ergeben sich die Parameter $\tilde{t} = \frac{be-cd}{ac-b^2}$ sowie $\tilde{s} = \frac{bd-ae}{ac-b^2}$. Sind $(\tilde{s}, \tilde{t}) \in D$, so ist der Fußpunkt 'foot' des Punktes $P$ innerhalb des Dreiecks. Andernfalls muss der Fußpunkt auf den Kanten oder Eckpunkten des Dreiecks liegen. Um die korrekte Lage des Fußpunktes zu bestimmen wird das Dreieck wie in Bild \ref{fig:regions} in unterschiedliche Regionen unterteilt. Der genaue Fußpunkt wird mit Hilfe ellipsenförmiger Ebenenkurven bestimmt. Diese liegen in der $s, t$-Ebene, demnach ist $Q(s, t)$ dort konstant. Dies vereinfacht die Berechunungen ob der Fußpunkt auf einer Kante oder einem Eckpunkt liegt. Im wesentlichen muss für die Regionen R1, R3, R5 die Ebenenkurve gewählt werden, die die Kante des Dreiecks tangential schneidet. Das Minimum von $Q(s, t)$ ist dann für R1 $(s, t)$, für R3 $(0, t)$ und für R5 $(s, 0)$. Einen Sonderfall bilden die Regionen R2, R4 und R6. Hier muss ebenfalls die Richtung der Kante sowie die des Gradienten beachtet werden. Hier wird das Vorzeichen des Skalarprodukts der beiden Richtungen betrachtet um die Region des Fußpunktes zubestimmen. Es gilt für R2 $(1, -1) \cdot grad(Q(0, 1))$, für R4 $(1, 0) \cdot grad(Q(0, 0))$ und für R6 $(-1, 0) \cdot grad(Q(1, 0))$. 
 
 \begin{figure}[h]
     \centering

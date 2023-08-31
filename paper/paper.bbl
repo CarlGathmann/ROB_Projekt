@@ -42,7 +42,7 @@
       \verb{url}
       \verb https://de.3dsystems.com/quickparts/learning-center/what-is-stl-file
       \endverb
-      \warn{\item Entry 'WasIstSTLDatei2017' (ROB_Projekt.bib): Invalid format '2017-02-01T11:50:32-0500' of date field 'date' - ignoring}
+      \warn{\item online entry 'WasIstSTLDatei2017' (ROB_Projekt.bib): Invalid format '2017-02-01T11:50:32-0500' of date field 'date' - ignoring}
     \endentry
     \entry{pandaDatasheet}{misc}{}
       \name{author}{1}{}{%
