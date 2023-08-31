@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.6)  31 AUG 2023 15:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.6)  31 AUG 2023 16:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -817,35 +817,32 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 124
  (/usr/local/texlive/2022/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [2]
-Underfull \hbox (badness 1701) in paragraph at lines 228--229
+Underfull \hbox (badness 1701) in paragraph at lines 266--267
 \OT1/ptm/m/n/10 lungs-form des Dreiecks ver[]andert. Die Eck-punkte eines
  []
-
-
-LaTeX Warning: Reference `fig:regions' on page 3 undefined on input line 232.
 
 <pics/vectorfield.png, id=25, 426.59375pt x 313.17pt>
 File: pics/vectorfield.png Graphic file (type png)
 <use pics/vectorfield.png>
-Package pdftex.def Info: pics/vectorfield.png  used on input line 331.
+Package pdftex.def Info: pics/vectorfield.png  used on input line 323.
 (pdftex.def)             Requested size: 258.0pt x 189.41347pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 331--332
+Overfull \hbox (6.0pt too wide) in paragraph at lines 323--324
  [][] 
  []
 
 [3 <./pics/vectorfield.png>]
-Underfull \hbox (badness 7685) in paragraph at lines 344--352
+Underfull \hbox (badness 7685) in paragraph at lines 336--344
 \OT1/ptm/m/n/10 kann unter dem fol-gen-den Link einge-se-hen wer-den:
  []
 
 
-Overfull \hbox (264.0pt too wide) in paragraph at lines 344--352
+Overfull \hbox (264.0pt too wide) in paragraph at lines 336--344
 []$ 
  []
 
 
-Underfull \hbox (badness 2245) in paragraph at lines 360--365
+Underfull \hbox (badness 2245) in paragraph at lines 352--357
 \OT1/ptm/m/n/10 bi-etet diese keine M[]oglichkeit, zwis-chen den einzel-nen
  []
 
@@ -861,23 +858,20 @@ Before submitting the final camera ready copy, remember to:
  process uses the appropriate paper size.
 
 [4] (./paper.aux)
-
-LaTeX Warning: There were undefined references.
-
 Package logreq Info: Writing requests to 'paper.run.xml'.
 \openout1 = `paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33528 strings out of 474968
- 820025 string characters out of 5776083
- 1630590 words of memory out of 5000000
- 54543 multiletter control sequences out of 15000+600000
+ 33527 strings out of 474968
+ 820014 string characters out of 5776083
+ 1631598 words of memory out of 5000000
+ 54542 multiletter control sequences out of 15000+600000
  505356 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,11n,103p,1130b,2025s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,11n,103p,1130b,2051s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (4 pages, 881910 bytes).
+Output written on paper.pdf (4 pages, 881594 bytes).
 PDF statistics:
  100 PDF objects out of 1000 (max. 8388607)
  60 compressed objects within 1 object stream

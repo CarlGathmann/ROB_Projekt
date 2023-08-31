@@ -223,15 +223,69 @@ von \Citeauthor{eberlyDistancePointTriangle}. In der Arbeit wird eine Methode zu
 \item 'dist': Dieser Parameter repräsentiert den minimalen Abstand zwischen einem vorgegebenen Punkt 'p' und dem Dreieck. Der Wert entspricht der kürzesten euklidischen Distanz, die von 'p' bis zur nächsten Position auf dem Dreieck (seien es Kanten, Eckpunkte oder eine Flächenposition innerhalb der Dreiecksgrenzen) 
 gemessen wird.
 \item 'pp0': Dieser Parameter repräsentiert den entsprechenden Punkt auf dem Dreieck, der 'p' am nächsten liegt. Es handelt sich hierbei um den Punkt auf dem Dreieck, der den minimalen Abstand 'dist' zu 'p' aufweist.
-\end{enumerate} 
+\end{enumerate}
+
+
+\begin{figure}[h] 
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-2, xmax=4,
+            ymin=-2, ymax=4,
+            axis lines=center,
+            axis on top=true,
+            domain=0:1,
+            ylabel=$t$,
+            xlabel=$s$,
+            xtick=false,
+            ytick=false,
+            ]
+            \addplot [dashed, line width = 1pt] coordinates {(-1,3) (3,-1)};
+            \addplot [dashed, line width = 1pt] coordinates {(-1,0) (3.5,0)};
+            \addplot [dashed, line width = 1pt] coordinates {(0,-1) (0,3.5)};
+
+            \node at (axis cs:0.6,0.6) {R0};
+            \node at (axis cs:1.5,1.5) {R1};
+            \node at (axis cs:-0.5,3.25) {R2};
+            \node at (axis cs:-0.5,1) {R3};
+            \node at (axis cs:-0.5,-0.5) {R4};
+            \node at (axis cs:1,-0.5) {R5};
+            \node at (axis cs:3.25,-0.5) {R6};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Die Unterteilung des Dreiecks in Regionen.}
+    \label{fig:regions}
+\end{figure}
+
+
+Die Anwendung dieser Methode ermöglicht somit eine präzise und effiziente Bestimmung der 
+Punkt-Dreieck-Distanz im dreidimensionalen Raum.
+
+
 
 Um dieses Ergebnis zu erreichen wird zunächst die Darstellungsform des Dreiecks verändert. Die Eckpunkte eines Dreiecks werden in eine Ebenengleichung $ T(s,t) = B + sE_0 + tE_1 $ übertragen, wobei $(s, t) \in D = \{(s,t): s \geq 0, t \geq 0, s + t \leq 1 \}$ gelten muss. Die Entfernung $Q(s,t)$ zwischen einem Punkt $P$ und dem Dreieck $T(s,t)$ lässt sich durch den quadrierten euklidischen Abstand darstellen: 
 \begin{equation}
     Q(s,t) = |T(s,t) - P|^2 = as^2 + 2bst + ct^2 + 2ds + 2et + f
 \end{equation}
-mit $(s,t) \in D$. Die Koeffizienten $a, b, c, d, e, f$ lassen sich durch die Eckpunkte des Dreiecks und den Punkt $P$ berechnen \autocite*{eberlyDistancePointTriangle}. Somit kann die Punkt-Dreieck-Distanz durch die Minimierung von $Q(s,t)$ bestimmt werden. Durch die Annahme, dass $E_0$ und $E_1$ linear unabhängig sind kann $Q(s,t)$ nur ein globales Minimum besitzen. Das Minimum von $Q(s,t)$ kann durch das Nullsetzen des Gradienten ermittelt werden. Daraus ergeben sich die Parameter $\tilde{t} = \frac{be-cd}{ac-b^2}$ sowie $\tilde{s} = \frac{bd-ae}{ac-b^2}$ Sind $\tilde{s}$ und $\tilde{t}$ innerhalb des Bereichs $D$, so ist der Punkt $P$ innerhalb des Dreiecks. Andernfalls muss das Minimum auf den Kanten des Dreieks liegen. Um die richtige Kante zu bestimme wird das Dreieck wie in Bild \ref*{fig:regions} in Regionen unterteilt um 
+mit $(s,t) \in D$. Die Koeffizienten $a, b, c, d, e, f$ lassen sich durch die Eckpunkte des Dreiecks und den Punkt $P$ berechnen \autocite*{eberlyDistancePointTriangle}. Somit kann die Punkt-Dreieck-Distanz durch die Minimierung von $Q(s,t)$ bestimmt werden. Durch die Annahme, dass $E_0$ und $E_1$ linear unabhängig sind kann $Q(s,t)$ nur ein globales Minimum besitzen. Das Minimum von $Q(s,t)$ kann durch das Nullsetzen des Gradienten ermittelt werden. Daraus ergeben sich die Parameter $\tilde{t} = \frac{be-cd}{ac-b^2}$ sowie $\tilde{s} = \frac{bd-ae}{ac-b^2}$. Sind $(\tilde{s}, \tilde{t}) \in D$, so ist der Punkt $P$ innerhalb des Dreiecks. Andernfalls muss das Minimum auf den Kanten des Dreiecks liegen. Um die richtige Kante zu bestimmen wird das Dreieck wie in Bild \ref{fig:regions} in Regionen unterteilt.
+
+
+Um den resultierenden Kraftvektor zu ermitteln, wurde folgendes Verfahren implementiert: \\
+\textbf{für jedes Dreieck der STL Datei:}
+\begin{enumerate}
+    \item Berechnung von $dist$ und $pp0$ mit Hilfe der Point-Triangle-Distance-Funktion.
+    \item Berechnung des Vektors $v$ zwischen $pp0$ und der Roboterposition $p$.
+    \item Wenn das Skalarprodukt von $v$ und der Normalen des Dreiecks positiv ist, wird die 
+    resultierende Kraft $F$ wie folgt ergänzt:
+    \begin{equation*}
+        F \mathrel{\raisebox{0.19ex}{$\scriptstyle+$}}= v \cdot influence(dist)
+    \end{equation*}
+\end{enumerate}
+Die Funktion $f(dist)$ ist dabei eine linear fallende Funktion, die den Einfluss der Distanz 
+auf die Kraft bestimmt.
 
 \begin{figure}[h]
+    \centering
     \begin{tikzpicture}
         \begin{axis}[
             xmin=-0.05, xmax=0.1,
@@ -263,68 +317,6 @@ mit $(s,t) \in D$. Die Koeffizienten $a, b, c, d, e, f$ lassen sich durch die Ec
     \end{tikzpicture}
     \caption{Die Funktion $influence(dist)$, die den Einfluss der Distanz auf den resultierenden Kraftvektor $F$ bestimmt.}
 \end{figure}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Die Anwendung dieser Methode ermöglicht somit eine präzise und effiziente Bestimmung der 
-Punkt-Dreieck-Distanz im dreidimensionalen Raum.
-
-\begin{figure}[h]
-    \begin{tikzpicture}
-        \begin{axis}[
-            xmin=-2, xmax=4,
-            ymin=-2, ymax=4,
-            axis lines=center,
-            axis on top=true,
-            domain=0:1,
-            ylabel=$t$,
-            xlabel=$s$,
-            xtick=false,
-            ytick=false,
-            ]
-            \addplot [dashed, line width = 1pt] coordinates {(-1,3) (3,-1)};
-            \addplot [dashed, line width = 1pt] coordinates {(-1,0) (3.5,0)};
-            \addplot [dashed, line width = 1pt] coordinates {(0,-1) (0,3.5)};
-
-            \node at (axis cs:0.6,0.6) {R0};
-            \node at (axis cs:1.5,1.5) {R1};
-            \node at (axis cs:-0.5,3.25) {R2};
-            \node at (axis cs:-0.5,1) {R3};
-            \node at (axis cs:-0.5,-0.5) {R4};
-            \node at (axis cs:1,-0.5) {R5};
-            \node at (axis cs:3.25,-0.5) {R6};
-            
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Die Unterteilung des Dreiecks in Regionen.}
-\end{figure}
-\begin{samepage}
-    Um den resultierenden Kraftvektor zu ermitteln, wurde folgendes Verfahren implementiert: \\
-    \textbf{für jedes Dreieck der STL Datei:}
-    \begin{enumerate}
-        \item Berechnung von $dist$ und $pp0$ mit Hilfe der Point-Triangle-Distance-Funktion.
-        \item Berechnung des Vektors $v$ zwischen $pp0$ und der Roboterposition $p$.
-        \item Wenn das Skalarprodukt von $v$ und der Normalen des Dreiecks positiv ist, wird die 
-        resultierende Kraft um
-        \begin{equation*}
-            F \mathrel{\raisebox{0.19ex}{$\scriptstyle+$}}= v \cdot f(dist)
-        \end{equation*}
-        ergänzt. 
-    \end{enumerate}
-    Die Funktion $f(dist)$ ist dabei eine linear fallende Funktion, die den Einfluss der Distanz 
-    auf die Kraft bestimmt.
-\end{samepage}
 
 \begin{figure}[h]
     \centering
