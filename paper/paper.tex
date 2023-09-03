@@ -40,17 +40,17 @@ In dieser Studie wird ein Ansatz zur Erzeugung von haptischem Feedback im Bereic
 \section{Einleitung}
 Die Mensch-Roboter-Interaktion hat in den letzten Jahren zunehmend an Bedeutung gewonnen und sich als ein dynamisches Forschungs- und Anwendungsfeld etabliert. Im Zentrum dieser Interaktion steht die Verbesserung der Benutzererfahrung durch die Erweiterung der sinnlichen Wahrnehmung des Menschen.
 
-In dieser Studie wird eine Methode präsentiert, der es dem Benutzer ermöglicht, virtuelle 3D-Modelle zu "ertasten", indem über ein Roboterinterface mit diesen interagiert. Dies wird durch die Erzeugung einer abweisenden Kraft erreicht, die auf den Oberflächen der virtuellen Modelle basiert. Dieses haptische Feedback simuliert das physische Berühren eines realen Objekts, obwohl kein tatsächlicher physischer Kontakt mit dem Modell besteht. 
+In dieser Studie wird eine Methode präsentiert, der es dem Benutzer ermöglicht, virtuelle 3D-Modelle zu "ertasten", indem er über ein Roboterinterface mit diesen interagiert. Dies wird durch die Erzeugung einer abweisenden Kraft erreicht, die auf den Oberflächen der virtuellen Modelle basiert. Dieses haptische Feedback simuliert das physische Berühren eines realen Objekts.
 
-Dieser Ansatz bietet zahlreiche Anwendungsmöglichkeiten, darunter die Simulation von Operationen für Ausbildungszwecke, die Erkundung von Objekten in gefährlichen oder unzugänglichen Umgebungen und die Erhöhung der Immersion in virtuellen Spielen. Darüber hinaus kann die Kombination unserer Technologie mit Virtual-Reality-Brillen zu einem verbesserten Gefühl von Präsenz und Realismus in virtuellen Umgebungen führen. Die in dieser Arbeit vorgestellten Prinzipien und Implementierungen können als Grundlage für weiterführende Forschungen und Entwicklungen auf diesem Gebiet dienen.
+Dieser Ansatz bietet zahlreiche Anwendungsmöglichkeiten, darunter die Simulation von Operationen für Ausbildungszwecke, die Erkundung von Objekten in gefährlichen oder unzugänglichen Umgebungen und die Erhöhung der Immersion in virtuellen Spielen. Die in dieser Arbeit vorgestellten Prinzipien und Implementierungen können als Grundlage für weiterführende Forschungen und Entwicklungen auf diesem Gebiet dienen.
 
 Das vorliegende Paper beleuchtet die zugrundeliegenden Prinzipien, technische Details und potenzielle Anwendungen dieses Ansatzes.
 
 
 \section{Methoden}
-Die Erzeugung des haptischen Feedbacks beruht auf der Berechnung einer abweisenden Kraft, die so konzipiert ist, dass dem Benutzer ein realistisches Gefühl für die Form des virtuellen 3D-Modells vermittelt wird. Die Modelle können als Datei im STL-Standart übergeben werden. Der STL-Standart speichert 3D-Modelle als Dreiecksmesh, das aus Eckpunkten und den Normalen der Dreiecke besteht. Es ist keine besondere CAD Software nötig um 3D-Modelle im STL Format zu erstellen. Außerdem ist das Format weit verbeitet und wird in der Industire zur Speicherung und Übertragung von 3D-Modellen eingesetzt. Das sorgt für hohe Flexibilität und einfache Handhabung \autocite{WasIstSTLDatei2017}.
+Die Erzeugung des haptischen Feedbacks beruht auf der Berechnung einer abweisenden Kraft, die so konzipiert ist, dass dem Benutzer ein realistisches Gefühl für die Form des virtuellen 3D-Modells vermittelt wird. Die Modelle können als Datei im STL-Standart übergeben werden. Der STL-Standart speichert 3D-Modelle als Dreiecksmesh, das aus Eckpunkten und den Normalenvektoren der Dreiecke besteht. Es ist keine besondere CAD-Software nötig um 3D-Modelle im STL Format zu erstellen. Außerdem ist das Format weit verbreitet und wird in der Industrie zur Speicherung und Übertragung von 3D-Modellen eingesetzt. Das sorgt für hohe Flexibilität und einfache Handhabung \autocite{WasIstSTLDatei2017}.
 
-Für die physische Implementierung der Mensch-Roboter-Interaktion wurde der Panda-Roboter von Franka Emika ausgewählt. Der Panda verfügt über 7 DOF und Kraftsensoren in allen sieben Achsen. So bietet der Manipulator eine hohe Präzision und Flexibilität, aber auch einen gewissen Sicherheitstandart \cite{pandaDatasheet}. Eine benutzerfreundliche, 3D-gedruckte Schnittstelle (siehe \ref{fig:MRinterface}) ist am Endeffektor des Roboters installiert, um die Führung durch menschliche Benutzer zu erleichtern.  
+Als Roboterarm wurde Panda-Roboter von Franka Emika ausgewählt. Der Panda verfügt über 7 DOF und Kraftsensoren in allen sieben Achsen. So bietet der Manipulator eine hohe Präzision und Flexibilität, aber auch einen gewissen Sicherheitsstandard \cite{pandaDatasheet}. Eine benutzerfreundliche, 3D-gedruckte Schnittstelle (siehe \ref{fig:MRinterface}) ist am Endeffektor des Roboters installiert, um die Führung durch menschliche Benutzer zu erleichtern.  
 
 \begin{figure}
     \centering
@@ -59,20 +59,20 @@ Für die physische Implementierung der Mensch-Roboter-Interaktion wurde der Pand
     \label{fig:MRinterface}
 \end{figure}
 
-Bei der entwickeleten Software für dieses System ist die Leistungsfähigkeit äußerst kritisch, um eine nahtlose Benutzererfahrung zu gewährleisten. Es ist entscheidend, dass die Anwendung in Echtzeit ausgeführt werden kann, wobei eine maximale Zeitverzögerung von weniger als 1 Millisekunde akzeptiert wird. Die Programmiersprache C++ eignet sich aufgrund ihrer hohen Performance, um diesem Anspruch gerecht zu werden.Die Hardware-Konfiguration besteht aus !!!HARDWARE!!!.Ein STL-Parser extrahiert die Eckpunkte der einzelen Dreiecke aus der STL-Datei und speichert diese in Matrizen. Damit eine einfache sowie effiziente Handhabung der 3D-Daten innerhalb des Programms möglich bleibt, werden Datentypen und Funktionen aus der "Eigen" Bibliothek verwendet. 
+Bei der entwickelten Software für dieses System ist die Leistungsfähigkeit äußerst kritisch, um eine nahtlose Benutzererfahrung zu gewährleisten. Es ist entscheidend, dass die Anwendung in Echtzeit ausgeführt werden kann, wobei eine maximale Verzögerung von weniger als 1 Millisekunde akzeptiert wird. Die Programmiersprache C++ eignet sich aufgrund ihrer hohen Performanz, um diesem Anspruch gerecht zu werden. Die Hardware-Konfiguration besteht aus einem Intel Core i7-3770 und 16GB RAM. Ein STL-Parser extrahiert die Eckpunkte der einzelnen Dreiecke aus der STL-Datei und speichert diese in Matrizen. Damit eine einfache sowie effiziente Handhabung der 3D-Daten innerhalb des Programms möglich bleibt, werden Datentypen und Funktionen aus der "Eigen" Bibliothek verwendet. 
 
 Im folgenden Teil werden verschieden Ansätze zur Erstellung eines stetigen und kontinuierlichen Vektorfeldes aus einem Dreiecksmesh vorgestellt. 
 
-Für die Verwendung der Ansätze \ref*{edge} und \ref*{bary} muss als Vorbereitung zuerst ein zweidimensionales Problem aus dem dreidimensionalen Problem gemacht werden. Erreicht wird dies durch die Erstellung eines neuen Koordinatensystems für jedes Dreieck, welches sich ergibt durch:
+Für die Verwendung der Ansätze \ref*{edge} und \ref*{bary} muss vorerst das zweidimensionale- zu einem dreidimensionalen Problem reduziert werden. Erreicht wird dies durch die Erstellung eines neuen Koordinatensystems für jedes Dreieck, welches sich ergibt durch:
 \begin{enumerate}
-    \item Eine Kante des Dreiecks als x-Achse
-    \item Das Kreuzprodukt der entstandenen Achse mit einem weiteren Vektor als z-Achse
-    \item Das Kreuzprodukt der beiden entstandenen Achsen als y-Achse
+    \item Eine Kante des Dreiecks als x-Achse.
+    \item Das Kreuzprodukt der entstandenen Achse mit einem weiteren Vektor als z-Achse.
+    \item Das Kreuzprodukt der beiden entstandenen Achsen als y-Achse.
 \end{enumerate}
 Die Koordinaten des Punktes werden dann in diesem Koordinatensystem angegeben. Auf diese Art repräsentieren die x- und y-Koordinaten die Position und die z-Koordinate die Entfernung des Punktes von der Ebene des Dreiecks. 
 
-\subsection{Edge Function}\label{edge}
-Die "Edge Function" oder "Kanten Funktion" ist eine häufig verwendete Funktion im Bereich der Computer-Grafik. Sie wird verwendet, um herauszufinden, wo sich ein Punkt relativ zu einer Kante befindet \autocite{pinedaParallelAlgorithmPolygon1988}. Definiert ist sie wie folgt:
+\subsection{Edge-Function}\label{edge}
+Die "Edge-Function" oder "Kanten Funktion" ist eine häufig verwendete Funktion im Bereich der Computergrafik. Sie wird verwendet, um herauszufinden, wo sich ein Punkt relativ zu einer Kante befindet \autocite{pinedaParallelAlgorithmPolygon1988}. Definiert ist sie wie folgt:
 \begin{equation}
     E_{i} = (x_{i+1} - x_{i})(y - y_{i}) - (y_{i+1} - y_{i})(x - x_{i})
 \end{equation}
@@ -81,14 +81,14 @@ x, y sind die Koordinaten des Punktes, $x_{i}$, $y_{i}$ sind die Koordinaten des
     E_{AB} \geq 0 \land E_{BC} \geq 0 \land E_{CA} \geq 0
 \end{equation}
 
-Mit dem Wissen, ob ein Punkt innerhalb des Dreiecks liegt und der Höhe des Punktes, die über die z-Koordinate des transformierten Punktes gegeben ist, kann ein Kraftvektor berechnet werden. Dieser Kraftvektor zeigt in Richtung der Normalen des Dreiecks und ist proportional zur Höhe des Punktes. Die Kraft kann dann wie folgt berechnet werden:
+Mit dem Wissen, ob ein Punkt innerhalb des Dreiecks liegt und der Höhe des Punktes, die über die z-Koordinate des transformierten Punktes gegeben ist, kann ein Kraftvektor berechnet werden. Dieser Kraftvektor zeigt in Richtung der Normalen des Dreiecks und ist proportional zur Höhe des Punktes. Die entsprechende Formel ergibt sich als:
 \begin{equation}
     F = \frac{1}{z} \cdot n
 \end{equation}
 $z$ ist die z-Koordinate des Punktes, der innerhalb des Dreiecks liegt und $n$ ist die Normale dieses Dreiecks.
 
 \subsection{Baryzentrische Koordinaten} \label{bary}
-Eine weitere Methode ist die Verwendung von baryzentrischen Koordinaten. Diese Methode ist sehr ähnlich zur "Edge Function", da diese ebenfalls verwendet wird, um herauszufinden, wo sich ein Punkt relativ zu einem Dreieck befindet. Ein wichtiger Unterschied ist allerdings, dass außerdem die relative Position innerhalb des Dreiecks bestimmt werden kann. Berechnet werden die Koordinaten wie folgt:
+Eine weitere Methode ist die Verwendung von baryzentrischen Koordinaten. Diese Methode ist sehr ähnlich zur "Edge-Function", da diese ebenfalls verwendet wird, um herauszufinden, wo sich ein Punkt relativ zu einem Dreieck befindet. Ein wichtiger Unterschied ist allerdings, dass außerdem die relative Position innerhalb des Dreiecks bestimmt werden kann. Berechnet werden die Koordinaten wie folgt:
 \begin{equation*}
     \lambda_b = \pm\frac{|\Lambda(\triangle(Q,B,C))|}{|\Lambda(\triangle(A,B,C))|}
 \end{equation*}
@@ -184,47 +184,22 @@ Die tatsächlich angewandte Methode zur des Kraftvektors basiert auf den Ergebni
     \label{fig:regions}
 \end{figure}
 
-
-Die Anwendung dieser Methode ermöglicht somit eine präzise und effiziente Bestimmung der Punkt-Dreieck-Distanz im dreidimensionalen Raum. Um dieses Ergebnis zu erreichen wird zunächst die Darstellungsform des Dreiecks verändert. Die Eckpunkte eines Dreiecks werden in eine Ebenengleichung $ T(s,t) = B + sE_0 + tE_1 $ übertragen, wobei $(s, t) \in D = \{(s,t): s \geq 0, t \geq 0, s + t \leq 1 \}$ gelten muss. Die Entfernung $Q(s,t)$ zwischen einem Punkt $P$ und dem Dreieck $T(s,t)$ lässt sich durch den quadrierten euklidischen Abstand als elliptischen Paraboloid darstellen: 
+Um die beiden Werte $dist$ und $foot$ zu berechnen wird zunächst die Darstellungsform des Dreiecks verändert. Die Eckpunkte eines Dreiecks werden in eine Ebenengleichung $ T(s,t) = B + sE_0 + tE_1 $ übertragen, wobei $(s, t) \in D = \{(s,t): s \geq 0, t \geq 0, s + t \leq 1 \}$ gelten muss. Die Entfernung $Q(s,t)$ zwischen einem Punkt $P$ und dem Dreieck $T(s,t)$ lässt sich durch den quadrierten euklidischen Abstand als elliptischen Paraboloid darstellen: 
 \begin{equation}
     Q(s,t) = |T(s,t) - P|^2 = as^2 + 2bst + ct^2 + 2ds + 2et + f
 \end{equation}
-mit $(s,t) \in D$. Die Koeffizienten $a, b, c, d, e, f$ lassen sich durch die Eckpunkte des Dreiecks und den Punkt $P$ berechnen \autocite*{eberlyDistancePointTriangle}. Somit kann die Punkt-Dreieck-Distanz durch die Minimierung von $Q(s,t)$ bestimmt werden. Durch die Annahme, dass $E_0$ und $E_1$ linear unabhängig sind, kann $Q(s,t)$ nur ein globales Minimum besitzen. Das Minimum von $Q(s,t)$ kann durch das Nullsetzen des Gradienten ermittelt werden. Daraus ergeben sich die Parameter $\tilde{t} = \frac{be-cd}{ac-b^2}$ sowie $\tilde{s} = \frac{bd-ae}{ac-b^2}$. Falls $(\tilde{s}, \tilde{t}) \in D$ befindet sich der sogenannte Fußpunkt 'foot' des Punktes $P$ im Inneren des Dreiecks. Andernfalls ist der Fußpunkt auf den Kanten oder Eckpunkten des Dreiecks lokalisiert. Um die konkrete Lage des Fußpunktes zu bestimmen wird, das Dreieck wie in Bild \ref{fig:regions} in unterschiedliche Regionen unterteilt. Der genaue Fußpunkt wird mithilfe der Ebenenkurven von $Q(s, t)$ bestimmt. Eine Ebenenkurve eines elliptischen Paraboloids fällt als einfache Ellipse aus. Diese Ellipsen liegen in der $s, t$-Ebene und $Q(s, t)$ hat dort eine konstante Höhe. Dies vereinfacht die Berechnungen, ob der Fußpunkt auf einer Kante oder einem Eckpunkt liegt. 
+mit $(s,t) \in D$. Die Koeffizienten $a, b, c, d, e, f$ lassen sich durch die Eckpunkte des Dreiecks und den Punkt $P$ berechnen \autocite*{eberlyDistancePointTriangle}. Somit kann die Punkt-Dreieck-Distanz durch die Minimierung von $Q(s,t)$ bestimmt werden. Durch die Annahme, dass $E_0$ und $E_1$ linear unabhängig sind, kann $Q(s,t)$ nur ein globales Minimum besitzen. Das Minimum von $Q(s,t)$ kann durch das Nullsetzen des Gradienten ermittelt werden. Daraus ergeben sich die Parameter $\tilde{t} = \frac{be-cd}{ac-b^2}$ sowie $\tilde{s} = \frac{bd-ae}{ac-b^2}$. Falls $(\tilde{s}, \tilde{t}) \in D$ befindet sich der sogenannte Fußpunkt 'foot' des Punktes $P$ im Inneren des Dreiecks. Andernfalls ist der Fußpunkt auf den Kanten oder Eckpunkten des Dreiecks lokalisiert. Um die konkrete Lage des Fußpunktes zu bestimmen wird das Dreieck wie in Bild \ref{fig:regions} in unterschiedliche Regionen unterteilt. Der genaue Fußpunkt wird mithilfe der Ebenenkurven von $Q(s, t)$ bestimmt. Eine Ebenenkurve eines elliptischen Paraboloids fällt als einfache Ellipse aus. Diese Ellipsen liegen in der $s, t$-Ebene und $Q(s, t)$ hat dort eine konstante Höhe. Dies vereinfacht die Berechnungen, ob der Fußpunkt auf einer Kante oder einem Eckpunkt liegt. 
 
 Für die Regionen R1, R3 und R5 wird die Ebenenkurve ausgewählt, die die jeweilige Kante des Dreiecks tangential berührt. Das Minimum der Funktion $Q(s,t)$ ist dann in R1 durch $(s,t)$, in R3 durch $(0,t)$ und in R5 durch $(s,0)$ gegeben.
 
-Die Regionen R2, R4 und R6 stellen Sonderfälle dar. In diesen Fällen müssen sowohl die Richtung der Dreieckskante als auch die des Gradienten berücksichtigt werden. Das Vorzeichen des Skalarprodukts der beiden Richtungen wird betrachtet, um die spezifische Region des Fußpunkts zu bestimmen. Dabei gilt für R2 $(1,-1)\cdot \nabla Q(0,1)$, für R4 $(1,0)\cdot\nabla Q(0,0)$ und für R6 $(-1,0)\cdot\nabla Q(1,0)$. Eine Übersicht der Regionen und der zugehörigen Bedingungen ist in Tabelle \ref{tab:regions} dargestellt.
-
-\begin{table}[h]
-    \centering
-    \caption{Region Classification based on $s$ and $t$}
-    \begin{tabular}{|>{\centering}p{0.04\textwidth}|>{\centering}p{0.1\textwidth}|p{0.11\textwidth}|p{0.15 \textwidth}|}
-        \hline
-        \centering Region & Condition & \centering \( (s, t) \) Criteria & Minimum \\
-        \hline
-        \hline
-        1 & \( s + t > \text{det} \) & \( s \geq 0 \) and \( t \geq 0 \) & \( (s,t) \) \\
-        \hline
-        2 & \( s + t > \text{det} \) & \( s < 0 \) & \( (1,-1) \cdot \nabla Q(0,1) \) \\
-        \hline
-        3 & \( s + t \leq \text{det} \) & \( s < 0 \) and \( t \geq 0 \) & \( (0,t) \) \\
-        \hline
-        4 & \( s + t \leq \text{det} \) & \( s < 0 \) and \( t < 0 \) & \( (1,0) \cdot \nabla Q(0,0) \) \\
-        \hline
-        5 & \( s + t \leq \text{det} \) & \( s \geq 0 \) and \( t < 0 \) & \( (s,0) \) \\
-        \hline
-        6 & \( s + t > \text{det} \) & \( t < 0 \) & \( (-1,0) \cdot \nabla Q(1,0) \) \\
-        \hline
-    \end{tabular}
-    \label{tab:regions}
-\end{table}
+Die Regionen R2, R4 und R6 stellen Sonderfälle dar. In diesen Fällen müssen sowohl die Richtung der Dreieckskante als auch die des Gradienten berücksichtigt werden. Das Vorzeichen des Skalarprodukts der beiden Richtungen wird betrachtet, um die spezifische Region des Fußpunkts zu bestimmen. Dabei gilt für R2 $(1,-1)\cdot \nabla Q(0,1)$, für R4 $(1,0)\cdot\nabla Q(0,0)$ und für R6 $(-1,0)\cdot\nabla Q(1,0)$. 
 
 Auf diese Weise kann der Fußpunkt 'foot' des Punktes $P$ auf dem Dreieck bestimmt werden. Der Abstand 'dist' ergibt sich aus der Länge des Vektors $\vv{P - foot}$. Um anschließend den resultierenden Kraftvektor zu ermitteln, wurde folgendes Verfahren implementiert: \\
 \linebreak
 \textbf{Für jedes Dreieck der STL Datei:}
 \begin{enumerate}
-    \item Berechnung von $dist$ und $pp0$ mithilfe der Point-Triangle-Distance-Funktion.
-    \item Berechnung des Vektors $v$ zwischen $pp0$ und der Roboterposition $p$.
+    \item Berechnung von $dist$ und $foot$ mithilfe der Point-Triangle-Distance-Funktion.
+    \item Berechnung des Vektors $v$ zwischen $foot$ und der Roboterposition $P$.
     \item Wenn das Skalarprodukt von $v$ und der Normalen des Dreiecks positiv ist, wird die resultierende Kraft $F$ wie folgt ergänzt:
     \begin{equation}
         F \mathrel{\raisebox{0.19ex}{$\scriptstyle+$}}= v \cdot influence(dist)
@@ -269,18 +244,15 @@ Auf diese Weise kann der Fußpunkt 'foot' des Punktes $P$ auf dem Dreieck bestim
 Die Funktion $influence(dist)$ repräsentiert eine linear fallende Funktion innerhalb eines spezifischen Intervalls, das von 1 auf 0 abfällt (siehe Bild \ref{fig:influence}). So können die verschiedenen Einflüsse der Kraftvektoren auf den resultierenden Gesamtkraftvektor variiert werden. Ein breiteres Intervall führt dabei zu einer weicheren und runderen Haptik des simulierten Objekts. In unserer Implementierung haben wir ein Intervall von 5cm bis 2cm festgelegt. Vektoren, die von dem Punkt der minimalen Distanz zur Roboterposition ausgehen und eine Länge von weniger als 2 cm aufweisen, werden mit voller Intensität in die Berechnung einbezogen. Vektoren mit einer Länge von 5 cm oder mehr werden aus der Berechnung ausgeschlossen. Für alle dazwischenliegenden Vektorlängen erfolgt eine lineare Interpolation.
 
 Zur Visualisierung der Kräfte für verschiedene Punkte wurde ein Vektorfeld erstellt (siehe \ref{fig:vectorfield}). Man kann klar erkennen, dass keine Unstetigkeiten entlang der Kanten und Eckpunkte auftreten.
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{pics/vectorfield.png}
-    \caption{Vektorfeld, das resultierende Kräfte für verschiedene Punkte visualisiert.}
+    \caption{Vektorfeld Visualisierung.}
     \label{fig:vectorfield}
 \end{figure}
-
-
 \section{Ergebnisse}
-
 \subsection{Effekt}
+
 Bei der Überprüfung unserer Implementierung konnten wir feststellen, dass der beabsichtigte Effekt der abstoßenden Kraft sowie das gewünschte Gefühl von Plastizität erfolgreich erreicht wurden. Die Kanten und Ecken der in der STL-Datei definierten Struktur waren deutlich wahrnehmbar. Ein kurzes Demonstrationsvideo, welches die Funktionsweise und das Resultat der angewandten Implementierung veranschaulicht, kann unter dem folgenden Link eingesehen werden:
 \begin{minipage}{\textwidth}
     \nobreak\url{https://youtu.be/IhARjkxuTvw}.
@@ -290,23 +262,22 @@ Bei der Überprüfung unserer Implementierung konnten wir feststellen, dass der 
 Hinsichtlich der Performanz wurden ebenfalls zufriedenstellende Resultate erzielt. Bei der Verarbeitung einer STL-Datei, welche 160 Dreiecke beinhaltet, betrug die durchschnittliche Berechnungszeit für den Kraftvektor eines Punktes lediglich 0.714 Millisekunden bei der oben beschriebenen Hardware. Im Kontext einer Echtzeitanwendung stellt dieser Wert eine akzeptable Berechnungslast dar. 
 
 \section{Diskussion}
-Bei den Ansätzen \ref*{edge} und \ref*{bary} ist es schwierig ein lückenloses Vektorfeld zu erstellen. 
 Die Methode aus \ref*{edge} zeichnet sich durch Einfachheit und Geschwindigkeit aus. Allerdings bietet  diese keine Möglichkeit, zwischen den einzelnen Dreiecken zu interpolieren. Daher entstehen Unstetigkeiten an den Kanten der Dreiecke, was zu unintuitivem und sprunghaftem Verhalten führt, wenn sich der Benutzer entlang der Kante bewegt.
 
-Der Vorteil von baryzentrischen Koordinaten gegenüber der "Edge Function" ist, dass die Unstetigkeit entlang der Kanten vermieden werden. Die Berechnung der baryzentrischen Koordinaten ist jedoch komplexer und langsamer als die Berechnung der "Edge Function". Außerdem ist zum Interpolieren der unterschiedlichen Dreieckflächen die Bestimmung der Nachbarschaftsbeziehungen notwendig. Auch der Rechenaufwand pro Roboterposition ist höher.
+Der Vorteil von \ref*{bary} gegenüber der \ref*{edge} ist, dass die Unstetigkeit entlang der Kanten vermieden werden. Die Berechnung der baryzentrischen Koordinaten ist jedoch komplexer und langsamer. Außerdem ist zum Interpolieren der unterschiedlichen Dreieckflächen die Bestimmung der Nachbarschaftsbeziehungen notwendig. So ist der Rechenaufwand pro Roboterposition deutlich höher.
 
-Auch die Methode \ref*{dist} kann unter bestimmten Umständen die nötige Laufzeit nicht einhalten. Sollten die STL-Dateien eine bestimmte Größe überschreiten, konnten die Anforderung an die Echtzeitfähigkeit nicht mehr zuverlässig erfüllt werden. Dennoch ist die Methode \ref*{dist} die einzige, die ein lückenloses Vektorfeld erzeugt und eine angemesse Laufzeit aufweist. Mögliche Ansätze zur Verbesserung der Performance wären: 
+Die Methode \ref*{dist} schafft es ein lückenloses Vektorfeld zu erzeugen und weist trotzdem eine gute Performanz auf. Mit unserer Implementierung liegt die Laufzeit allerdings in $O(n)$, was zu Skalierungsproblemen führt. Sollten die STL-Dateien eine bestimmte Größe überschreiten, kann die Anforderung an die Echtzeitfähigkeit nicht mehr zuverlässig eingehalten werden. Mögliche Ansätze zur Verbesserung der Performanz wären: 
 \begin{enumerate}
-    \item Das Parallelisieren der Berechnungen durch das Einsetzen der GPU
-    \item Level of Detail (LOD) Modelle, wie sie in der Gomputergraphik verwendet werden
-    \item Nutzung von Octrees
-    \item Nutzung von leistungsstärkerer Hardware
+    \item Das Parallelisieren der Berechnungen durch das Einsetzen der GPU.
+    \item Level of Detail (LOD) Modelle, wie sie in der Computergrafik verwendet werden.
+    \item Nutzung von Octrees.
+    \item Nutzung von leistungsstärkerer Hardware.
 \end{enumerate}
 Durch die Anwendung dieser Methoden könnte die Echtzeitanforderung des Systems auch bei umfangreicheren STL-Dateien erfüllt werden.
 
 \section{Fazit}
 
-Zusammenfassend kann gesagt werden, dass die Methode \ref*{dist} die nötige Performanz aufweist, um ein haptisches Feedback zu erzeugen. Durch das Verwenden des STL-Standarts können mit Beschränkungen in der Auflösung des 3D-Modells beliebige Objekte zu stetigen und kontinuierlichen Vektorfeldern konvertiert werden. Somit ist eine einfache und flexible Handhabung gewährleistet. Die Methode zur Erzeugung haptischen Feedbacks eines Roboters durch virtuelle 3D-Modelle kann demnach in unterschiedlichen Anwendungsbereich Einzug finden.  
+Zusammenfassend kann gesagt werden, dass es gelungen ist mit \ref*{dist} eine effiziente Methode zu entwerfen, ein haptisches Feedback zu erzeugen. Durch das Verwenden des STL-Standarts können mit Beschränkungen in der Auflösung des 3D-Modells beliebige Objekte zu stetigen und kontinuierlichen Vektorfeldern konvertiert werden. Somit ist eine einfache und flexible Handhabung gewährleistet. Die Methode zur Erzeugung haptischen Feedbacks eines Roboters durch virtuelle 3D-Modelle kann demnach in unterschiedlichen Anwendungsbereich Einzug finden.  
 
 \printbibliography
 
