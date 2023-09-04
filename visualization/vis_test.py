@@ -7,7 +7,7 @@ from stl import mesh
 
 from utils import create_triangles, point_triangle_distance, influence
 
-filepath = 'meshes/test.stl'
+filepath = '../meshes/test.stl'
 
 fig, ax = plt.subplots(subplot_kw=dict(projection='3d'))
 stl_mesh = mesh.Mesh.from_file(filepath)
