@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 from mpl_toolkits import mplot3d
 from stl import mesh
 
-from utils_v2 import create_triangles, point_triangle_distance, influence
+from utils import create_triangles, point_triangle_distance, influence
 
 filepath = 'meshes/test.stl'
 
